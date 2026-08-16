@@ -35,6 +35,7 @@ import { Route as AppBusinessosRouteImport } from './routes/_app/businessos'
 import { Route as AppWorkspacesIndexRouteImport } from './routes/_app/workspaces/index'
 import { Route as AppToolsIndexRouteImport } from './routes/_app/tools/index'
 import { Route as AppCampaignsIndexRouteImport } from './routes/_app/campaigns/index'
+import { Route as AppBusinessosIndexRouteImport } from './routes/_app/businessos/index'
 import { Route as RequestStatusTokenRouteImport } from './routes/request.status.$token'
 import { Route as LovableEmailSuppressionRouteImport } from './routes/lovable/email/suppression'
 import { Route as IntakeOrgSlugHackathonRouteImport } from './routes/intake.$orgSlug.hackathon'
@@ -189,6 +190,11 @@ const AppCampaignsIndexRoute = AppCampaignsIndexRouteImport.update({
   path: '/campaigns/',
   getParentRoute: () => AppRoute,
 } as any)
+const AppBusinessosIndexRoute = AppBusinessosIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppBusinessosRoute,
+} as any)
 const RequestStatusTokenRoute = RequestStatusTokenRouteImport.update({
   id: '/request/status/$token',
   path: '/request/status/$token',
@@ -323,7 +329,7 @@ export interface FileRoutesByFullPath {
   '/reset-password': typeof ResetPasswordRoute
   '/thumbnail': typeof ThumbnailRoute
   '/unsubscribe': typeof UnsubscribeRoute
-  '/businessos': typeof AppBusinessosRoute
+  '/businessos': typeof AppBusinessosRouteWithChildren
   '/calendar': typeof AppCalendarRoute
   '/connectors': typeof AppConnectorsRoute
   '/dashboard': typeof AppDashboardRoute
@@ -356,6 +362,7 @@ export interface FileRoutesByFullPath {
   '/intake/$orgSlug/hackathon': typeof IntakeOrgSlugHackathonRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/request/status/$token': typeof RequestStatusTokenRoute
+  '/businessos/': typeof AppBusinessosIndexRoute
   '/campaigns/': typeof AppCampaignsIndexRoute
   '/tools/': typeof AppToolsIndexRoute
   '/workspaces/': typeof AppWorkspacesIndexRoute
@@ -374,7 +381,6 @@ export interface FileRoutesByTo {
   '/reset-password': typeof ResetPasswordRoute
   '/thumbnail': typeof ThumbnailRoute
   '/unsubscribe': typeof UnsubscribeRoute
-  '/businessos': typeof AppBusinessosRoute
   '/calendar': typeof AppCalendarRoute
   '/connectors': typeof AppConnectorsRoute
   '/dashboard': typeof AppDashboardRoute
@@ -407,6 +413,7 @@ export interface FileRoutesByTo {
   '/intake/$orgSlug/hackathon': typeof IntakeOrgSlugHackathonRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/request/status/$token': typeof RequestStatusTokenRoute
+  '/businessos': typeof AppBusinessosIndexRoute
   '/campaigns': typeof AppCampaignsIndexRoute
   '/tools': typeof AppToolsIndexRoute
   '/workspaces': typeof AppWorkspacesIndexRoute
@@ -427,7 +434,7 @@ export interface FileRoutesById {
   '/reset-password': typeof ResetPasswordRoute
   '/thumbnail': typeof ThumbnailRoute
   '/unsubscribe': typeof UnsubscribeRoute
-  '/_app/businessos': typeof AppBusinessosRoute
+  '/_app/businessos': typeof AppBusinessosRouteWithChildren
   '/_app/calendar': typeof AppCalendarRoute
   '/_app/connectors': typeof AppConnectorsRoute
   '/_app/dashboard': typeof AppDashboardRoute
@@ -460,6 +467,7 @@ export interface FileRoutesById {
   '/intake/$orgSlug/hackathon': typeof IntakeOrgSlugHackathonRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/request/status/$token': typeof RequestStatusTokenRoute
+  '/_app/businessos/': typeof AppBusinessosIndexRoute
   '/_app/campaigns/': typeof AppCampaignsIndexRoute
   '/_app/tools/': typeof AppToolsIndexRoute
   '/_app/workspaces/': typeof AppWorkspacesIndexRoute
@@ -513,6 +521,7 @@ export interface FileRouteTypes {
     | '/intake/$orgSlug/hackathon'
     | '/lovable/email/suppression'
     | '/request/status/$token'
+    | '/businessos/'
     | '/campaigns/'
     | '/tools/'
     | '/workspaces/'
@@ -531,7 +540,6 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/thumbnail'
     | '/unsubscribe'
-    | '/businessos'
     | '/calendar'
     | '/connectors'
     | '/dashboard'
@@ -564,6 +572,7 @@ export interface FileRouteTypes {
     | '/intake/$orgSlug/hackathon'
     | '/lovable/email/suppression'
     | '/request/status/$token'
+    | '/businessos'
     | '/campaigns'
     | '/tools'
     | '/workspaces'
@@ -616,6 +625,7 @@ export interface FileRouteTypes {
     | '/intake/$orgSlug/hackathon'
     | '/lovable/email/suppression'
     | '/request/status/$token'
+    | '/_app/businessos/'
     | '/_app/campaigns/'
     | '/_app/tools/'
     | '/_app/workspaces/'
@@ -837,6 +847,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppCampaignsIndexRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/businessos/': {
+      id: '/_app/businessos/'
+      path: '/'
+      fullPath: '/businessos/'
+      preLoaderRoute: typeof AppBusinessosIndexRouteImport
+      parentRoute: typeof AppBusinessosRoute
+    }
     '/request/status/$token': {
       id: '/request/status/$token'
       path: '/request/status/$token'
@@ -1008,8 +1025,20 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AppBusinessosRouteChildren {
+  AppBusinessosIndexRoute: typeof AppBusinessosIndexRoute
+}
+
+const AppBusinessosRouteChildren: AppBusinessosRouteChildren = {
+  AppBusinessosIndexRoute: AppBusinessosIndexRoute,
+}
+
+const AppBusinessosRouteWithChildren = AppBusinessosRoute._addFileChildren(
+  AppBusinessosRouteChildren,
+)
+
 interface AppRouteChildren {
-  AppBusinessosRoute: typeof AppBusinessosRoute
+  AppBusinessosRoute: typeof AppBusinessosRouteWithChildren
   AppCalendarRoute: typeof AppCalendarRoute
   AppConnectorsRoute: typeof AppConnectorsRoute
   AppDashboardRoute: typeof AppDashboardRoute
@@ -1040,7 +1069,7 @@ interface AppRouteChildren {
 }
 
 const AppRouteChildren: AppRouteChildren = {
-  AppBusinessosRoute: AppBusinessosRoute,
+  AppBusinessosRoute: AppBusinessosRouteWithChildren,
   AppCalendarRoute: AppCalendarRoute,
   AppConnectorsRoute: AppConnectorsRoute,
   AppDashboardRoute: AppDashboardRoute,
