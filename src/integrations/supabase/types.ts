@@ -14,6 +14,145 @@ export type Database = {
   }
   public: {
     Tables: {
+      ai_actions: {
+        Row: {
+          confidence: number
+          created_at: string
+          created_by: string
+          decided_at: string | null
+          decided_by: string | null
+          id: string
+          kind: string
+          org_id: string
+          payload: Json
+          rationale: string | null
+          status: string
+          title: string
+        }
+        Insert: {
+          confidence?: number
+          created_at?: string
+          created_by: string
+          decided_at?: string | null
+          decided_by?: string | null
+          id?: string
+          kind: string
+          org_id: string
+          payload?: Json
+          rationale?: string | null
+          status?: string
+          title: string
+        }
+        Update: {
+          confidence?: number
+          created_at?: string
+          created_by?: string
+          decided_at?: string | null
+          decided_by?: string | null
+          id?: string
+          kind?: string
+          org_id?: string
+          payload?: Json
+          rationale?: string | null
+          status?: string
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ai_actions_org_id_fkey"
+            columns: ["org_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      ai_conversations: {
+        Row: {
+          created_at: string
+          created_by: string
+          id: string
+          org_id: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          created_by: string
+          id?: string
+          org_id: string
+          title?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          id?: string
+          org_id?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ai_conversations_org_id_fkey"
+            columns: ["org_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      ai_messages: {
+        Row: {
+          confidence: number | null
+          content: string
+          conversation_id: string
+          created_at: string
+          id: string
+          org_id: string
+          role: string
+          sources: Json
+          tool_trace: Json
+        }
+        Insert: {
+          confidence?: number | null
+          content?: string
+          conversation_id: string
+          created_at?: string
+          id?: string
+          org_id: string
+          role: string
+          sources?: Json
+          tool_trace?: Json
+        }
+        Update: {
+          confidence?: number | null
+          content?: string
+          conversation_id?: string
+          created_at?: string
+          id?: string
+          org_id?: string
+          role?: string
+          sources?: Json
+          tool_trace?: Json
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ai_messages_conversation_id_fkey"
+            columns: ["conversation_id"]
+            isOneToOne: false
+            referencedRelation: "ai_conversations"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "ai_messages_org_id_fkey"
+            columns: ["org_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       ai_usage_log: {
         Row: {
           called_at: string
@@ -273,6 +412,159 @@ export type Database = {
             columns: ["workspace_id"]
             isOneToOne: false
             referencedRelation: "workspaces"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      business_plans: {
+        Row: {
+          content: string
+          created_at: string
+          created_by: string
+          id: string
+          inputs: Json
+          language: string
+          org_id: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          content?: string
+          created_at?: string
+          created_by: string
+          id?: string
+          inputs?: Json
+          language?: string
+          org_id: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          created_by?: string
+          id?: string
+          inputs?: Json
+          language?: string
+          org_id?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "business_plans_org_id_fkey"
+            columns: ["org_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      business_profiles: {
+        Row: {
+          brand_name: string | null
+          created_at: string
+          created_by: string
+          employees: number | null
+          goals: string | null
+          id: string
+          inn: string | null
+          language: string
+          legal_name: string | null
+          main_products: string[]
+          monthly_costs: number | null
+          monthly_revenue: number | null
+          org_id: string
+          region: string | null
+          sector: string | null
+          tax_regime: string | null
+          updated_at: string
+        }
+        Insert: {
+          brand_name?: string | null
+          created_at?: string
+          created_by: string
+          employees?: number | null
+          goals?: string | null
+          id?: string
+          inn?: string | null
+          language?: string
+          legal_name?: string | null
+          main_products?: string[]
+          monthly_costs?: number | null
+          monthly_revenue?: number | null
+          org_id: string
+          region?: string | null
+          sector?: string | null
+          tax_regime?: string | null
+          updated_at?: string
+        }
+        Update: {
+          brand_name?: string | null
+          created_at?: string
+          created_by?: string
+          employees?: number | null
+          goals?: string | null
+          id?: string
+          inn?: string | null
+          language?: string
+          legal_name?: string | null
+          main_products?: string[]
+          monthly_costs?: number | null
+          monthly_revenue?: number | null
+          org_id?: string
+          region?: string | null
+          sector?: string | null
+          tax_regime?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "business_profiles_org_id_fkey"
+            columns: ["org_id"]
+            isOneToOne: true
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      business_scores: {
+        Row: {
+          advice: string | null
+          created_at: string
+          created_by: string
+          factors: Json
+          id: string
+          kind: string
+          org_id: string
+          score: number
+        }
+        Insert: {
+          advice?: string | null
+          created_at?: string
+          created_by: string
+          factors?: Json
+          id?: string
+          kind?: string
+          org_id: string
+          score: number
+        }
+        Update: {
+          advice?: string | null
+          created_at?: string
+          created_by?: string
+          factors?: Json
+          id?: string
+          kind?: string
+          org_id?: string
+          score?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "business_scores_org_id_fkey"
+            columns: ["org_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
             referencedColumns: ["id"]
           },
         ]
@@ -1067,6 +1359,131 @@ export type Database = {
         }
         Relationships: []
       }
+      market_observations: {
+        Row: {
+          confidence: number
+          created_at: string
+          currency: string
+          demand_signal: string | null
+          id: string
+          note: string | null
+          observed_at: string
+          org_id: string
+          price: number
+          product: string
+          region: string | null
+          source_id: string | null
+          source_label: string | null
+          source_url: string | null
+          unit: string
+        }
+        Insert: {
+          confidence?: number
+          created_at?: string
+          currency?: string
+          demand_signal?: string | null
+          id?: string
+          note?: string | null
+          observed_at?: string
+          org_id: string
+          price: number
+          product: string
+          region?: string | null
+          source_id?: string | null
+          source_label?: string | null
+          source_url?: string | null
+          unit?: string
+        }
+        Update: {
+          confidence?: number
+          created_at?: string
+          currency?: string
+          demand_signal?: string | null
+          id?: string
+          note?: string | null
+          observed_at?: string
+          org_id?: string
+          price?: number
+          product?: string
+          region?: string | null
+          source_id?: string | null
+          source_label?: string | null
+          source_url?: string | null
+          unit?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "market_observations_org_id_fkey"
+            columns: ["org_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "market_observations_source_id_fkey"
+            columns: ["source_id"]
+            isOneToOne: false
+            referencedRelation: "market_sources"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      market_sources: {
+        Row: {
+          active: boolean
+          created_at: string
+          created_by: string
+          id: string
+          kind: string
+          last_checked_at: string | null
+          last_status: string | null
+          name: string
+          org_id: string
+          region: string | null
+          schedule: string
+          updated_at: string
+          url: string | null
+        }
+        Insert: {
+          active?: boolean
+          created_at?: string
+          created_by: string
+          id?: string
+          kind?: string
+          last_checked_at?: string | null
+          last_status?: string | null
+          name: string
+          org_id: string
+          region?: string | null
+          schedule?: string
+          updated_at?: string
+          url?: string | null
+        }
+        Update: {
+          active?: boolean
+          created_at?: string
+          created_by?: string
+          id?: string
+          kind?: string
+          last_checked_at?: string | null
+          last_status?: string | null
+          name?: string
+          org_id?: string
+          region?: string | null
+          schedule?: string
+          updated_at?: string
+          url?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "market_sources_org_id_fkey"
+            columns: ["org_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       org_campaign_types: {
         Row: {
           archived: boolean
@@ -1506,6 +1923,68 @@ export type Database = {
           workspace_id?: string | null
         }
         Relationships: []
+      }
+      supplier_offers: {
+        Row: {
+          contact: string | null
+          created_at: string
+          currency: string
+          delivery_cost: number
+          delivery_days: number | null
+          id: string
+          min_qty: number | null
+          org_id: string
+          price: number
+          product: string
+          quality_score: number | null
+          region: string | null
+          source_url: string | null
+          supplier: string
+          unit: string
+        }
+        Insert: {
+          contact?: string | null
+          created_at?: string
+          currency?: string
+          delivery_cost?: number
+          delivery_days?: number | null
+          id?: string
+          min_qty?: number | null
+          org_id: string
+          price: number
+          product: string
+          quality_score?: number | null
+          region?: string | null
+          source_url?: string | null
+          supplier: string
+          unit?: string
+        }
+        Update: {
+          contact?: string | null
+          created_at?: string
+          currency?: string
+          delivery_cost?: number
+          delivery_days?: number | null
+          id?: string
+          min_qty?: number | null
+          org_id?: string
+          price?: number
+          product?: string
+          quality_score?: number | null
+          region?: string | null
+          source_url?: string | null
+          supplier?: string
+          unit?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "supplier_offers_org_id_fkey"
+            columns: ["org_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       suppressed_emails: {
         Row: {

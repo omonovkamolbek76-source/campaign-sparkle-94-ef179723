@@ -10,9 +10,11 @@ import { BRAND } from "@/lib/brand";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/login")({
-  validateSearch: (s: Record<string, unknown>) => ({
-    redirect: typeof s.redirect === "string" ? s.redirect : "/dashboard",
-    mode: s.mode === "signup" ? ("signup" as const) : ("signin" as const),
+  validateSearch: (
+    s: Record<string, unknown>,
+  ): { redirect?: string; mode?: "signin" | "signup" } => ({
+    redirect: typeof s.redirect === "string" ? s.redirect : undefined,
+    mode: s.mode === "signup" ? ("signup" as const) : undefined,
   }),
   component: LoginPage,
 });
@@ -21,9 +23,11 @@ const HEX_CLIP = "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)"
 
 function LoginPage() {
   const search = Route.useSearch();
+  const redirectTo = search.redirect ?? "/dashboard";
   const nav = useNavigate();
   const { session, loading } = useAuth();
-  const [mode, setMode] = useState<"signin" | "signup" | "forgot">(search.mode);
+  const [mode, setMode] = useState<"signin" | "signup" | "forgot">(search.mode ?? "signin");
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
@@ -32,9 +36,9 @@ function LoginPage() {
 
   useEffect(() => {
     if (!loading && session) {
-      nav({ to: search.redirect as "/dashboard", replace: true });
+      nav({ to: redirectTo as "/dashboard", replace: true });
     }
-  }, [session, loading, nav, search.redirect]);
+  }, [session, loading, nav, redirectTo]);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -92,7 +96,7 @@ function LoginPage() {
   const google = async () => {
     setBusy(true);
     const result = await lovable.auth.signInWithOAuth("google", {
-      redirect_uri: `${window.location.origin}${search.redirect}`,
+      redirect_uri: `${window.location.origin}${redirectTo}`,
     });
     if (result.error) {
       toast.error(result.error.message);

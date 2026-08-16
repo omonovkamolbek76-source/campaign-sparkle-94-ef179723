@@ -31,9 +31,11 @@ import { Route as AppFunnelRouteImport } from './routes/_app/funnel'
 import { Route as AppDashboardRouteImport } from './routes/_app/dashboard'
 import { Route as AppConnectorsRouteImport } from './routes/_app/connectors'
 import { Route as AppCalendarRouteImport } from './routes/_app/calendar'
+import { Route as AppBusinessosRouteImport } from './routes/_app/businessos'
 import { Route as AppWorkspacesIndexRouteImport } from './routes/_app/workspaces/index'
 import { Route as AppToolsIndexRouteImport } from './routes/_app/tools/index'
 import { Route as AppCampaignsIndexRouteImport } from './routes/_app/campaigns/index'
+import { Route as AppBusinessosIndexRouteImport } from './routes/_app/businessos/index'
 import { Route as RequestStatusTokenRouteImport } from './routes/request.status.$token'
 import { Route as LovableEmailSuppressionRouteImport } from './routes/lovable/email/suppression'
 import { Route as IntakeOrgSlugHackathonRouteImport } from './routes/intake.$orgSlug.hackathon'
@@ -51,6 +53,11 @@ import { Route as AppToolsCampaignCreatorRouteImport } from './routes/_app/tools
 import { Route as AppToolsAllUtmsRouteImport } from './routes/_app/tools/all-utms'
 import { Route as AppToolsSplatRouteImport } from './routes/_app/tools/$'
 import { Route as AppCampaignsIdRouteImport } from './routes/_app/campaigns/$id'
+import { Route as AppBusinessosSourcesRouteImport } from './routes/_app/businessos/sources'
+import { Route as AppBusinessosProfileRouteImport } from './routes/_app/businessos/profile'
+import { Route as AppBusinessosMarketRouteImport } from './routes/_app/businessos/market'
+import { Route as AppBusinessosFinanceRouteImport } from './routes/_app/businessos/finance'
+import { Route as AppBusinessosActionsRouteImport } from './routes/_app/businessos/actions'
 import { Route as LovableEmailTransactionalSendRouteImport } from './routes/lovable/email/transactional/send'
 import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
@@ -168,6 +175,11 @@ const AppCalendarRoute = AppCalendarRouteImport.update({
   path: '/calendar',
   getParentRoute: () => AppRoute,
 } as any)
+const AppBusinessosRoute = AppBusinessosRouteImport.update({
+  id: '/businessos',
+  path: '/businessos',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppWorkspacesIndexRoute = AppWorkspacesIndexRouteImport.update({
   id: '/workspaces/',
   path: '/workspaces/',
@@ -182,6 +194,11 @@ const AppCampaignsIndexRoute = AppCampaignsIndexRouteImport.update({
   id: '/campaigns/',
   path: '/campaigns/',
   getParentRoute: () => AppRoute,
+} as any)
+const AppBusinessosIndexRoute = AppBusinessosIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppBusinessosRoute,
 } as any)
 const RequestStatusTokenRoute = RequestStatusTokenRouteImport.update({
   id: '/request/status/$token',
@@ -269,6 +286,31 @@ const AppCampaignsIdRoute = AppCampaignsIdRouteImport.update({
   path: '/campaigns/$id',
   getParentRoute: () => AppRoute,
 } as any)
+const AppBusinessosSourcesRoute = AppBusinessosSourcesRouteImport.update({
+  id: '/sources',
+  path: '/sources',
+  getParentRoute: () => AppBusinessosRoute,
+} as any)
+const AppBusinessosProfileRoute = AppBusinessosProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AppBusinessosRoute,
+} as any)
+const AppBusinessosMarketRoute = AppBusinessosMarketRouteImport.update({
+  id: '/market',
+  path: '/market',
+  getParentRoute: () => AppBusinessosRoute,
+} as any)
+const AppBusinessosFinanceRoute = AppBusinessosFinanceRouteImport.update({
+  id: '/finance',
+  path: '/finance',
+  getParentRoute: () => AppBusinessosRoute,
+} as any)
+const AppBusinessosActionsRoute = AppBusinessosActionsRouteImport.update({
+  id: '/actions',
+  path: '/actions',
+  getParentRoute: () => AppBusinessosRoute,
+} as any)
 const LovableEmailTransactionalSendRoute =
   LovableEmailTransactionalSendRouteImport.update({
     id: '/lovable/email/transactional/send',
@@ -317,6 +359,7 @@ export interface FileRoutesByFullPath {
   '/reset-password': typeof ResetPasswordRoute
   '/thumbnail': typeof ThumbnailRoute
   '/unsubscribe': typeof UnsubscribeRoute
+  '/businessos': typeof AppBusinessosRouteWithChildren
   '/calendar': typeof AppCalendarRoute
   '/connectors': typeof AppConnectorsRoute
   '/dashboard': typeof AppDashboardRoute
@@ -332,6 +375,11 @@ export interface FileRoutesByFullPath {
   '/r/$slug': typeof RSlugRoute
   '/request/$orgSlug': typeof RequestOrgSlugRoute
   '/w/$token': typeof WTokenRoute
+  '/businessos/actions': typeof AppBusinessosActionsRoute
+  '/businessos/finance': typeof AppBusinessosFinanceRoute
+  '/businessos/market': typeof AppBusinessosMarketRoute
+  '/businessos/profile': typeof AppBusinessosProfileRoute
+  '/businessos/sources': typeof AppBusinessosSourcesRoute
   '/campaigns/$id': typeof AppCampaignsIdRoute
   '/tools/$': typeof AppToolsSplatRoute
   '/tools/all-utms': typeof AppToolsAllUtmsRoute
@@ -349,6 +397,7 @@ export interface FileRoutesByFullPath {
   '/intake/$orgSlug/hackathon': typeof IntakeOrgSlugHackathonRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/request/status/$token': typeof RequestStatusTokenRoute
+  '/businessos/': typeof AppBusinessosIndexRoute
   '/campaigns/': typeof AppCampaignsIndexRoute
   '/tools/': typeof AppToolsIndexRoute
   '/workspaces/': typeof AppWorkspacesIndexRoute
@@ -382,6 +431,11 @@ export interface FileRoutesByTo {
   '/r/$slug': typeof RSlugRoute
   '/request/$orgSlug': typeof RequestOrgSlugRoute
   '/w/$token': typeof WTokenRoute
+  '/businessos/actions': typeof AppBusinessosActionsRoute
+  '/businessos/finance': typeof AppBusinessosFinanceRoute
+  '/businessos/market': typeof AppBusinessosMarketRoute
+  '/businessos/profile': typeof AppBusinessosProfileRoute
+  '/businessos/sources': typeof AppBusinessosSourcesRoute
   '/campaigns/$id': typeof AppCampaignsIdRoute
   '/tools/$': typeof AppToolsSplatRoute
   '/tools/all-utms': typeof AppToolsAllUtmsRoute
@@ -399,6 +453,7 @@ export interface FileRoutesByTo {
   '/intake/$orgSlug/hackathon': typeof IntakeOrgSlugHackathonRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/request/status/$token': typeof RequestStatusTokenRoute
+  '/businessos': typeof AppBusinessosIndexRoute
   '/campaigns': typeof AppCampaignsIndexRoute
   '/tools': typeof AppToolsIndexRoute
   '/workspaces': typeof AppWorkspacesIndexRoute
@@ -419,6 +474,7 @@ export interface FileRoutesById {
   '/reset-password': typeof ResetPasswordRoute
   '/thumbnail': typeof ThumbnailRoute
   '/unsubscribe': typeof UnsubscribeRoute
+  '/_app/businessos': typeof AppBusinessosRouteWithChildren
   '/_app/calendar': typeof AppCalendarRoute
   '/_app/connectors': typeof AppConnectorsRoute
   '/_app/dashboard': typeof AppDashboardRoute
@@ -434,6 +490,11 @@ export interface FileRoutesById {
   '/r/$slug': typeof RSlugRoute
   '/request/$orgSlug': typeof RequestOrgSlugRoute
   '/w/$token': typeof WTokenRoute
+  '/_app/businessos/actions': typeof AppBusinessosActionsRoute
+  '/_app/businessos/finance': typeof AppBusinessosFinanceRoute
+  '/_app/businessos/market': typeof AppBusinessosMarketRoute
+  '/_app/businessos/profile': typeof AppBusinessosProfileRoute
+  '/_app/businessos/sources': typeof AppBusinessosSourcesRoute
   '/_app/campaigns/$id': typeof AppCampaignsIdRoute
   '/_app/tools/$': typeof AppToolsSplatRoute
   '/_app/tools/all-utms': typeof AppToolsAllUtmsRoute
@@ -451,6 +512,7 @@ export interface FileRoutesById {
   '/intake/$orgSlug/hackathon': typeof IntakeOrgSlugHackathonRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/request/status/$token': typeof RequestStatusTokenRoute
+  '/_app/businessos/': typeof AppBusinessosIndexRoute
   '/_app/campaigns/': typeof AppCampaignsIndexRoute
   '/_app/tools/': typeof AppToolsIndexRoute
   '/_app/workspaces/': typeof AppWorkspacesIndexRoute
@@ -471,6 +533,7 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/thumbnail'
     | '/unsubscribe'
+    | '/businessos'
     | '/calendar'
     | '/connectors'
     | '/dashboard'
@@ -486,6 +549,11 @@ export interface FileRouteTypes {
     | '/r/$slug'
     | '/request/$orgSlug'
     | '/w/$token'
+    | '/businessos/actions'
+    | '/businessos/finance'
+    | '/businessos/market'
+    | '/businessos/profile'
+    | '/businessos/sources'
     | '/campaigns/$id'
     | '/tools/$'
     | '/tools/all-utms'
@@ -503,6 +571,7 @@ export interface FileRouteTypes {
     | '/intake/$orgSlug/hackathon'
     | '/lovable/email/suppression'
     | '/request/status/$token'
+    | '/businessos/'
     | '/campaigns/'
     | '/tools/'
     | '/workspaces/'
@@ -536,6 +605,11 @@ export interface FileRouteTypes {
     | '/r/$slug'
     | '/request/$orgSlug'
     | '/w/$token'
+    | '/businessos/actions'
+    | '/businessos/finance'
+    | '/businessos/market'
+    | '/businessos/profile'
+    | '/businessos/sources'
     | '/campaigns/$id'
     | '/tools/$'
     | '/tools/all-utms'
@@ -553,6 +627,7 @@ export interface FileRouteTypes {
     | '/intake/$orgSlug/hackathon'
     | '/lovable/email/suppression'
     | '/request/status/$token'
+    | '/businessos'
     | '/campaigns'
     | '/tools'
     | '/workspaces'
@@ -572,6 +647,7 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/thumbnail'
     | '/unsubscribe'
+    | '/_app/businessos'
     | '/_app/calendar'
     | '/_app/connectors'
     | '/_app/dashboard'
@@ -587,6 +663,11 @@ export interface FileRouteTypes {
     | '/r/$slug'
     | '/request/$orgSlug'
     | '/w/$token'
+    | '/_app/businessos/actions'
+    | '/_app/businessos/finance'
+    | '/_app/businessos/market'
+    | '/_app/businessos/profile'
+    | '/_app/businessos/sources'
     | '/_app/campaigns/$id'
     | '/_app/tools/$'
     | '/_app/tools/all-utms'
@@ -604,6 +685,7 @@ export interface FileRouteTypes {
     | '/intake/$orgSlug/hackathon'
     | '/lovable/email/suppression'
     | '/request/status/$token'
+    | '/_app/businessos/'
     | '/_app/campaigns/'
     | '/_app/tools/'
     | '/_app/workspaces/'
@@ -797,6 +879,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppCalendarRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/businessos': {
+      id: '/_app/businessos'
+      path: '/businessos'
+      fullPath: '/businessos'
+      preLoaderRoute: typeof AppBusinessosRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/workspaces/': {
       id: '/_app/workspaces/'
       path: '/workspaces'
@@ -817,6 +906,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/campaigns/'
       preLoaderRoute: typeof AppCampaignsIndexRouteImport
       parentRoute: typeof AppRoute
+    }
+    '/_app/businessos/': {
+      id: '/_app/businessos/'
+      path: '/'
+      fullPath: '/businessos/'
+      preLoaderRoute: typeof AppBusinessosIndexRouteImport
+      parentRoute: typeof AppBusinessosRoute
     }
     '/request/status/$token': {
       id: '/request/status/$token'
@@ -937,6 +1033,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppCampaignsIdRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/businessos/sources': {
+      id: '/_app/businessos/sources'
+      path: '/sources'
+      fullPath: '/businessos/sources'
+      preLoaderRoute: typeof AppBusinessosSourcesRouteImport
+      parentRoute: typeof AppBusinessosRoute
+    }
+    '/_app/businessos/profile': {
+      id: '/_app/businessos/profile'
+      path: '/profile'
+      fullPath: '/businessos/profile'
+      preLoaderRoute: typeof AppBusinessosProfileRouteImport
+      parentRoute: typeof AppBusinessosRoute
+    }
+    '/_app/businessos/market': {
+      id: '/_app/businessos/market'
+      path: '/market'
+      fullPath: '/businessos/market'
+      preLoaderRoute: typeof AppBusinessosMarketRouteImport
+      parentRoute: typeof AppBusinessosRoute
+    }
+    '/_app/businessos/finance': {
+      id: '/_app/businessos/finance'
+      path: '/finance'
+      fullPath: '/businessos/finance'
+      preLoaderRoute: typeof AppBusinessosFinanceRouteImport
+      parentRoute: typeof AppBusinessosRoute
+    }
+    '/_app/businessos/actions': {
+      id: '/_app/businessos/actions'
+      path: '/actions'
+      fullPath: '/businessos/actions'
+      preLoaderRoute: typeof AppBusinessosActionsRouteImport
+      parentRoute: typeof AppBusinessosRoute
+    }
     '/lovable/email/transactional/send': {
       id: '/lovable/email/transactional/send'
       path: '/lovable/email/transactional/send'
@@ -989,7 +1120,30 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AppBusinessosRouteChildren {
+  AppBusinessosActionsRoute: typeof AppBusinessosActionsRoute
+  AppBusinessosFinanceRoute: typeof AppBusinessosFinanceRoute
+  AppBusinessosMarketRoute: typeof AppBusinessosMarketRoute
+  AppBusinessosProfileRoute: typeof AppBusinessosProfileRoute
+  AppBusinessosSourcesRoute: typeof AppBusinessosSourcesRoute
+  AppBusinessosIndexRoute: typeof AppBusinessosIndexRoute
+}
+
+const AppBusinessosRouteChildren: AppBusinessosRouteChildren = {
+  AppBusinessosActionsRoute: AppBusinessosActionsRoute,
+  AppBusinessosFinanceRoute: AppBusinessosFinanceRoute,
+  AppBusinessosMarketRoute: AppBusinessosMarketRoute,
+  AppBusinessosProfileRoute: AppBusinessosProfileRoute,
+  AppBusinessosSourcesRoute: AppBusinessosSourcesRoute,
+  AppBusinessosIndexRoute: AppBusinessosIndexRoute,
+}
+
+const AppBusinessosRouteWithChildren = AppBusinessosRoute._addFileChildren(
+  AppBusinessosRouteChildren,
+)
+
 interface AppRouteChildren {
+  AppBusinessosRoute: typeof AppBusinessosRouteWithChildren
   AppCalendarRoute: typeof AppCalendarRoute
   AppConnectorsRoute: typeof AppConnectorsRoute
   AppDashboardRoute: typeof AppDashboardRoute
@@ -1020,6 +1174,7 @@ interface AppRouteChildren {
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppBusinessosRoute: AppBusinessosRouteWithChildren,
   AppCalendarRoute: AppCalendarRoute,
   AppConnectorsRoute: AppConnectorsRoute,
   AppDashboardRoute: AppDashboardRoute,

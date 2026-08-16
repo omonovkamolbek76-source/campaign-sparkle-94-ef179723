@@ -53,6 +53,7 @@ export const Route = createFileRoute("/_app")({
 
 const PRIMARY_NAV = [
   { to: "/dashboard", label: "This week", Icon: IconHome },
+  { to: "/businessos", label: "BusinessOS AI", Icon: IconBolt },
   { to: "/campaigns", label: "Campaigns", Icon: IconWorkspace },
   { to: "/leads", label: "Leads", Icon: IconAudience },
   { to: "/tools", label: "Marketing tools", Icon: IconCampaign },
