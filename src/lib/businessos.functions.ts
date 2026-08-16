@@ -10,9 +10,11 @@ import {
 
 async function orgOf(sb: { from: (t: string) => any }, userId: string): Promise<string> {
   const { data } = await sb.from("org_members").select("org_id").eq("user_id", userId).limit(1).maybeSingle();
-  if (!data?.org_id) throw new Error("No workspace found for this user");
-  return data.org_id as string;
+  if (data?.org_id) return data.org_id as string;
+  const { ensureOrgForUser } = await import("@/lib/org-provision.server");
+  return ensureOrgForUser(userId);
 }
+
 
 /** One turn of the AI Command Center: think → tools → answer. */
 export const askCopilot = createServerFn({ method: "POST" })
