@@ -16,16 +16,11 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as AppRouteImport } from './routes/_app'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as WTokenRouteImport } from './routes/w.$token'
-import { Route as RequestOrgSlugRouteImport } from './routes/request.$orgSlug'
-import { Route as RSlugRouteImport } from './routes/r.$slug'
 import { Route as InviteTokenRouteImport } from './routes/invite.$token'
 import { Route as EmailUnsubscribeRouteImport } from './routes/email/unsubscribe'
 import { Route as AppBusinessosRouteImport } from './routes/_app/businessos'
 import { Route as AppBusinessosIndexRouteImport } from './routes/_app/businessos/index'
-import { Route as RequestStatusTokenRouteImport } from './routes/request.status.$token'
 import { Route as LovableEmailSuppressionRouteImport } from './routes/lovable/email/suppression'
-import { Route as IntakeOrgSlugHackathonRouteImport } from './routes/intake.$orgSlug.hackathon'
 import { Route as AppBusinessosSourcesRouteImport } from './routes/_app/businessos/sources'
 import { Route as AppBusinessosProfileRouteImport } from './routes/_app/businessos/profile'
 import { Route as AppBusinessosMarketRouteImport } from './routes/_app/businessos/market'
@@ -73,21 +68,6 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const WTokenRoute = WTokenRouteImport.update({
-  id: '/w/$token',
-  path: '/w/$token',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RequestOrgSlugRoute = RequestOrgSlugRouteImport.update({
-  id: '/request/$orgSlug',
-  path: '/request/$orgSlug',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RSlugRoute = RSlugRouteImport.update({
-  id: '/r/$slug',
-  path: '/r/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const InviteTokenRoute = InviteTokenRouteImport.update({
   id: '/invite/$token',
   path: '/invite/$token',
@@ -108,19 +88,9 @@ const AppBusinessosIndexRoute = AppBusinessosIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AppBusinessosRoute,
 } as any)
-const RequestStatusTokenRoute = RequestStatusTokenRouteImport.update({
-  id: '/request/status/$token',
-  path: '/request/status/$token',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const LovableEmailSuppressionRoute = LovableEmailSuppressionRouteImport.update({
   id: '/lovable/email/suppression',
   path: '/lovable/email/suppression',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IntakeOrgSlugHackathonRoute = IntakeOrgSlugHackathonRouteImport.update({
-  id: '/intake/$orgSlug/hackathon',
-  path: '/intake/$orgSlug/hackathon',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppBusinessosSourcesRoute = AppBusinessosSourcesRouteImport.update({
@@ -199,17 +169,12 @@ export interface FileRoutesByFullPath {
   '/businessos': typeof AppBusinessosRouteWithChildren
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/invite/$token': typeof InviteTokenRoute
-  '/r/$slug': typeof RSlugRoute
-  '/request/$orgSlug': typeof RequestOrgSlugRoute
-  '/w/$token': typeof WTokenRoute
   '/businessos/actions': typeof AppBusinessosActionsRoute
   '/businessos/finance': typeof AppBusinessosFinanceRoute
   '/businessos/market': typeof AppBusinessosMarketRoute
   '/businessos/profile': typeof AppBusinessosProfileRoute
   '/businessos/sources': typeof AppBusinessosSourcesRoute
-  '/intake/$orgSlug/hackathon': typeof IntakeOrgSlugHackathonRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
-  '/request/status/$token': typeof RequestStatusTokenRoute
   '/businessos/': typeof AppBusinessosIndexRoute
   '/api/public/cron/cluster-retros': typeof ApiPublicCronClusterRetrosRoute
   '/api/public/cron/daily-digest': typeof ApiPublicCronDailyDigestRoute
@@ -228,17 +193,12 @@ export interface FileRoutesByTo {
   '/unsubscribe': typeof UnsubscribeRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/invite/$token': typeof InviteTokenRoute
-  '/r/$slug': typeof RSlugRoute
-  '/request/$orgSlug': typeof RequestOrgSlugRoute
-  '/w/$token': typeof WTokenRoute
   '/businessos/actions': typeof AppBusinessosActionsRoute
   '/businessos/finance': typeof AppBusinessosFinanceRoute
   '/businessos/market': typeof AppBusinessosMarketRoute
   '/businessos/profile': typeof AppBusinessosProfileRoute
   '/businessos/sources': typeof AppBusinessosSourcesRoute
-  '/intake/$orgSlug/hackathon': typeof IntakeOrgSlugHackathonRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
-  '/request/status/$token': typeof RequestStatusTokenRoute
   '/businessos': typeof AppBusinessosIndexRoute
   '/api/public/cron/cluster-retros': typeof ApiPublicCronClusterRetrosRoute
   '/api/public/cron/daily-digest': typeof ApiPublicCronDailyDigestRoute
@@ -260,17 +220,12 @@ export interface FileRoutesById {
   '/_app/businessos': typeof AppBusinessosRouteWithChildren
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/invite/$token': typeof InviteTokenRoute
-  '/r/$slug': typeof RSlugRoute
-  '/request/$orgSlug': typeof RequestOrgSlugRoute
-  '/w/$token': typeof WTokenRoute
   '/_app/businessos/actions': typeof AppBusinessosActionsRoute
   '/_app/businessos/finance': typeof AppBusinessosFinanceRoute
   '/_app/businessos/market': typeof AppBusinessosMarketRoute
   '/_app/businessos/profile': typeof AppBusinessosProfileRoute
   '/_app/businessos/sources': typeof AppBusinessosSourcesRoute
-  '/intake/$orgSlug/hackathon': typeof IntakeOrgSlugHackathonRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
-  '/request/status/$token': typeof RequestStatusTokenRoute
   '/_app/businessos/': typeof AppBusinessosIndexRoute
   '/api/public/cron/cluster-retros': typeof ApiPublicCronClusterRetrosRoute
   '/api/public/cron/daily-digest': typeof ApiPublicCronDailyDigestRoute
@@ -292,17 +247,12 @@ export interface FileRouteTypes {
     | '/businessos'
     | '/email/unsubscribe'
     | '/invite/$token'
-    | '/r/$slug'
-    | '/request/$orgSlug'
-    | '/w/$token'
     | '/businessos/actions'
     | '/businessos/finance'
     | '/businessos/market'
     | '/businessos/profile'
     | '/businessos/sources'
-    | '/intake/$orgSlug/hackathon'
     | '/lovable/email/suppression'
-    | '/request/status/$token'
     | '/businessos/'
     | '/api/public/cron/cluster-retros'
     | '/api/public/cron/daily-digest'
@@ -321,17 +271,12 @@ export interface FileRouteTypes {
     | '/unsubscribe'
     | '/email/unsubscribe'
     | '/invite/$token'
-    | '/r/$slug'
-    | '/request/$orgSlug'
-    | '/w/$token'
     | '/businessos/actions'
     | '/businessos/finance'
     | '/businessos/market'
     | '/businessos/profile'
     | '/businessos/sources'
-    | '/intake/$orgSlug/hackathon'
     | '/lovable/email/suppression'
-    | '/request/status/$token'
     | '/businessos'
     | '/api/public/cron/cluster-retros'
     | '/api/public/cron/daily-digest'
@@ -352,17 +297,12 @@ export interface FileRouteTypes {
     | '/_app/businessos'
     | '/email/unsubscribe'
     | '/invite/$token'
-    | '/r/$slug'
-    | '/request/$orgSlug'
-    | '/w/$token'
     | '/_app/businessos/actions'
     | '/_app/businessos/finance'
     | '/_app/businessos/market'
     | '/_app/businessos/profile'
     | '/_app/businessos/sources'
-    | '/intake/$orgSlug/hackathon'
     | '/lovable/email/suppression'
-    | '/request/status/$token'
     | '/_app/businessos/'
     | '/api/public/cron/cluster-retros'
     | '/api/public/cron/daily-digest'
@@ -383,12 +323,7 @@ export interface RootRouteChildren {
   UnsubscribeRoute: typeof UnsubscribeRoute
   EmailUnsubscribeRoute: typeof EmailUnsubscribeRoute
   InviteTokenRoute: typeof InviteTokenRoute
-  RSlugRoute: typeof RSlugRoute
-  RequestOrgSlugRoute: typeof RequestOrgSlugRoute
-  WTokenRoute: typeof WTokenRoute
-  IntakeOrgSlugHackathonRoute: typeof IntakeOrgSlugHackathonRoute
   LovableEmailSuppressionRoute: typeof LovableEmailSuppressionRoute
-  RequestStatusTokenRoute: typeof RequestStatusTokenRoute
   ApiPublicCronClusterRetrosRoute: typeof ApiPublicCronClusterRetrosRoute
   ApiPublicCronDailyDigestRoute: typeof ApiPublicCronDailyDigestRoute
   LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
@@ -449,27 +384,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/w/$token': {
-      id: '/w/$token'
-      path: '/w/$token'
-      fullPath: '/w/$token'
-      preLoaderRoute: typeof WTokenRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/request/$orgSlug': {
-      id: '/request/$orgSlug'
-      path: '/request/$orgSlug'
-      fullPath: '/request/$orgSlug'
-      preLoaderRoute: typeof RequestOrgSlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/r/$slug': {
-      id: '/r/$slug'
-      path: '/r/$slug'
-      fullPath: '/r/$slug'
-      preLoaderRoute: typeof RSlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/invite/$token': {
       id: '/invite/$token'
       path: '/invite/$token'
@@ -498,25 +412,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppBusinessosIndexRouteImport
       parentRoute: typeof AppBusinessosRoute
     }
-    '/request/status/$token': {
-      id: '/request/status/$token'
-      path: '/request/status/$token'
-      fullPath: '/request/status/$token'
-      preLoaderRoute: typeof RequestStatusTokenRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/lovable/email/suppression': {
       id: '/lovable/email/suppression'
       path: '/lovable/email/suppression'
       fullPath: '/lovable/email/suppression'
       preLoaderRoute: typeof LovableEmailSuppressionRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/intake/$orgSlug/hackathon': {
-      id: '/intake/$orgSlug/hackathon'
-      path: '/intake/$orgSlug/hackathon'
-      fullPath: '/intake/$orgSlug/hackathon'
-      preLoaderRoute: typeof IntakeOrgSlugHackathonRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_app/businessos/sources': {
@@ -648,12 +548,7 @@ const rootRouteChildren: RootRouteChildren = {
   UnsubscribeRoute: UnsubscribeRoute,
   EmailUnsubscribeRoute: EmailUnsubscribeRoute,
   InviteTokenRoute: InviteTokenRoute,
-  RSlugRoute: RSlugRoute,
-  RequestOrgSlugRoute: RequestOrgSlugRoute,
-  WTokenRoute: WTokenRoute,
-  IntakeOrgSlugHackathonRoute: IntakeOrgSlugHackathonRoute,
   LovableEmailSuppressionRoute: LovableEmailSuppressionRoute,
-  RequestStatusTokenRoute: RequestStatusTokenRoute,
   ApiPublicCronClusterRetrosRoute: ApiPublicCronClusterRetrosRoute,
   ApiPublicCronDailyDigestRoute: ApiPublicCronDailyDigestRoute,
   LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
