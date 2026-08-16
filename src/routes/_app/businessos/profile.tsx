@@ -34,26 +34,30 @@ export const Route = createFileRoute("/_app/businessos/profile")({
 type Profile = {
   id?: string;
   legal_name: string;
+  brand_name: string;
+  inn: string;
   sector: string;
   region: string;
   employees: number;
   monthly_revenue: number;
   monthly_costs: number;
-  currency: string;
+  tax_regime: string;
+  main_products: string;
   goals: string;
-  notes: string;
 };
 
 const EMPTY: Profile = {
   legal_name: "",
+  brand_name: "",
+  inn: "",
   sector: "",
   region: "",
   employees: 0,
   monthly_revenue: 0,
   monthly_costs: 0,
-  currency: "UZS",
+  tax_regime: "",
+  main_products: "",
   goals: "",
-  notes: "",
 };
 
 function ProfilePage() {
@@ -69,21 +73,23 @@ function ProfilePage() {
     setLoading(true);
     const { data } = await supabase
       .from("business_profiles")
-      .select("id,legal_name,sector,region,employees,monthly_revenue,monthly_costs,currency,goals,notes")
+      .select("id,legal_name,brand_name,inn,sector,region,employees,monthly_revenue,monthly_costs,tax_regime,main_products,goals")
       .eq("org_id", orgId)
       .maybeSingle();
     if (data) {
       setP({
         id: data.id as string,
-        legal_name: (data.legal_name as string) ?? "",
-        sector: (data.sector as string) ?? "",
-        region: (data.region as string) ?? "",
+        legal_name: data.legal_name ?? "",
+        brand_name: data.brand_name ?? "",
+        inn: data.inn ?? "",
+        sector: data.sector ?? "",
+        region: data.region ?? "",
         employees: Number(data.employees ?? 0),
         monthly_revenue: Number(data.monthly_revenue ?? 0),
         monthly_costs: Number(data.monthly_costs ?? 0),
-        currency: (data.currency as string) ?? "UZS",
-        goals: (data.goals as string) ?? "",
-        notes: (data.notes as string) ?? "",
+        tax_regime: data.tax_regime ?? "",
+        main_products: (data.main_products ?? []).join(", "),
+        goals: data.goals ?? "",
       });
     }
     setLoading(false);
@@ -100,14 +106,16 @@ function ProfilePage() {
       org_id: orgId,
       created_by: user.id,
       legal_name: p.legal_name,
+      brand_name: p.brand_name,
+      inn: p.inn,
       sector: p.sector,
       region: p.region,
       employees: p.employees,
       monthly_revenue: p.monthly_revenue,
       monthly_costs: p.monthly_costs,
-      currency: p.currency,
+      tax_regime: p.tax_regime,
+      main_products: p.main_products.split(",").map((x) => x.trim()).filter(Boolean),
       goals: p.goals,
-      notes: p.notes,
     };
     const { error } = p.id
       ? await supabase.from("business_profiles").update(payload).eq("id", p.id)
@@ -150,12 +158,15 @@ function ProfilePage() {
           <>
             <div className="grid gap-3 md:grid-cols-2">
               {field(t("profile.legalName"), "legal_name")}
+              {field(t("profile.brandName"), "brand_name")}
+              {field(t("profile.inn"), "inn")}
               {field(t("profile.sector"), "sector")}
               {field(t("profile.region"), "region")}
               {field(t("profile.employees"), "employees", "number")}
               {field(t("profile.revenue"), "monthly_revenue", "number")}
               {field(t("profile.costs"), "monthly_costs", "number")}
-              {field(t("profile.currency"), "currency")}
+              {field(t("profile.taxRegime"), "tax_regime")}
+              {field(t("profile.products"), "main_products")}
             </div>
             <label className="mt-3 block text-xs text-muted-foreground">
               {t("profile.goals")}
@@ -163,15 +174,6 @@ function ProfilePage() {
                 value={p.goals}
                 rows={3}
                 onChange={(e) => setP({ ...p, goals: e.target.value })}
-                className="mt-1 w-full resize-none rounded-lg border border-glass-border bg-background/40 px-3 py-2 text-sm text-foreground outline-none focus:border-primary/50"
-              />
-            </label>
-            <label className="mt-3 block text-xs text-muted-foreground">
-              {t("profile.notes")}
-              <textarea
-                value={p.notes}
-                rows={3}
-                onChange={(e) => setP({ ...p, notes: e.target.value })}
                 className="mt-1 w-full resize-none rounded-lg border border-glass-border bg-background/40 px-3 py-2 text-sm text-foreground outline-none focus:border-primary/50"
               />
             </label>
