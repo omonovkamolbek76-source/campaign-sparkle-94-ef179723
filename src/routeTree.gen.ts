@@ -54,6 +54,7 @@ import { Route as AppToolsAllUtmsRouteImport } from './routes/_app/tools/all-utm
 import { Route as AppToolsSplatRouteImport } from './routes/_app/tools/$'
 import { Route as AppCampaignsIdRouteImport } from './routes/_app/campaigns/$id'
 import { Route as AppBusinessosSourcesRouteImport } from './routes/_app/businessos/sources'
+import { Route as AppBusinessosProfileRouteImport } from './routes/_app/businessos/profile'
 import { Route as AppBusinessosMarketRouteImport } from './routes/_app/businessos/market'
 import { Route as AppBusinessosFinanceRouteImport } from './routes/_app/businessos/finance'
 import { Route as LovableEmailTransactionalSendRouteImport } from './routes/lovable/email/transactional/send'
@@ -289,6 +290,11 @@ const AppBusinessosSourcesRoute = AppBusinessosSourcesRouteImport.update({
   path: '/sources',
   getParentRoute: () => AppBusinessosRoute,
 } as any)
+const AppBusinessosProfileRoute = AppBusinessosProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AppBusinessosRoute,
+} as any)
 const AppBusinessosMarketRoute = AppBusinessosMarketRouteImport.update({
   id: '/market',
   path: '/market',
@@ -365,6 +371,7 @@ export interface FileRoutesByFullPath {
   '/w/$token': typeof WTokenRoute
   '/businessos/finance': typeof AppBusinessosFinanceRoute
   '/businessos/market': typeof AppBusinessosMarketRoute
+  '/businessos/profile': typeof AppBusinessosProfileRoute
   '/businessos/sources': typeof AppBusinessosSourcesRoute
   '/campaigns/$id': typeof AppCampaignsIdRoute
   '/tools/$': typeof AppToolsSplatRoute
@@ -419,6 +426,7 @@ export interface FileRoutesByTo {
   '/w/$token': typeof WTokenRoute
   '/businessos/finance': typeof AppBusinessosFinanceRoute
   '/businessos/market': typeof AppBusinessosMarketRoute
+  '/businessos/profile': typeof AppBusinessosProfileRoute
   '/businessos/sources': typeof AppBusinessosSourcesRoute
   '/campaigns/$id': typeof AppCampaignsIdRoute
   '/tools/$': typeof AppToolsSplatRoute
@@ -476,6 +484,7 @@ export interface FileRoutesById {
   '/w/$token': typeof WTokenRoute
   '/_app/businessos/finance': typeof AppBusinessosFinanceRoute
   '/_app/businessos/market': typeof AppBusinessosMarketRoute
+  '/_app/businessos/profile': typeof AppBusinessosProfileRoute
   '/_app/businessos/sources': typeof AppBusinessosSourcesRoute
   '/_app/campaigns/$id': typeof AppCampaignsIdRoute
   '/_app/tools/$': typeof AppToolsSplatRoute
@@ -533,6 +542,7 @@ export interface FileRouteTypes {
     | '/w/$token'
     | '/businessos/finance'
     | '/businessos/market'
+    | '/businessos/profile'
     | '/businessos/sources'
     | '/campaigns/$id'
     | '/tools/$'
@@ -587,6 +597,7 @@ export interface FileRouteTypes {
     | '/w/$token'
     | '/businessos/finance'
     | '/businessos/market'
+    | '/businessos/profile'
     | '/businessos/sources'
     | '/campaigns/$id'
     | '/tools/$'
@@ -643,6 +654,7 @@ export interface FileRouteTypes {
     | '/w/$token'
     | '/_app/businessos/finance'
     | '/_app/businessos/market'
+    | '/_app/businessos/profile'
     | '/_app/businessos/sources'
     | '/_app/campaigns/$id'
     | '/_app/tools/$'
@@ -1016,6 +1028,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppBusinessosSourcesRouteImport
       parentRoute: typeof AppBusinessosRoute
     }
+    '/_app/businessos/profile': {
+      id: '/_app/businessos/profile'
+      path: '/profile'
+      fullPath: '/businessos/profile'
+      preLoaderRoute: typeof AppBusinessosProfileRouteImport
+      parentRoute: typeof AppBusinessosRoute
+    }
     '/_app/businessos/market': {
       id: '/_app/businessos/market'
       path: '/market'
@@ -1085,6 +1104,7 @@ declare module '@tanstack/react-router' {
 interface AppBusinessosRouteChildren {
   AppBusinessosFinanceRoute: typeof AppBusinessosFinanceRoute
   AppBusinessosMarketRoute: typeof AppBusinessosMarketRoute
+  AppBusinessosProfileRoute: typeof AppBusinessosProfileRoute
   AppBusinessosSourcesRoute: typeof AppBusinessosSourcesRoute
   AppBusinessosIndexRoute: typeof AppBusinessosIndexRoute
 }
@@ -1092,6 +1112,7 @@ interface AppBusinessosRouteChildren {
 const AppBusinessosRouteChildren: AppBusinessosRouteChildren = {
   AppBusinessosFinanceRoute: AppBusinessosFinanceRoute,
   AppBusinessosMarketRoute: AppBusinessosMarketRoute,
+  AppBusinessosProfileRoute: AppBusinessosProfileRoute,
   AppBusinessosSourcesRoute: AppBusinessosSourcesRoute,
   AppBusinessosIndexRoute: AppBusinessosIndexRoute,
 }
