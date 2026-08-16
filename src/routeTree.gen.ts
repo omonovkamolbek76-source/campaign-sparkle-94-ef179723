@@ -31,6 +31,7 @@ import { Route as AppFunnelRouteImport } from './routes/_app/funnel'
 import { Route as AppDashboardRouteImport } from './routes/_app/dashboard'
 import { Route as AppConnectorsRouteImport } from './routes/_app/connectors'
 import { Route as AppCalendarRouteImport } from './routes/_app/calendar'
+import { Route as AppBusinessosRouteImport } from './routes/_app/businessos'
 import { Route as AppWorkspacesIndexRouteImport } from './routes/_app/workspaces/index'
 import { Route as AppToolsIndexRouteImport } from './routes/_app/tools/index'
 import { Route as AppCampaignsIndexRouteImport } from './routes/_app/campaigns/index'
@@ -166,6 +167,11 @@ const AppConnectorsRoute = AppConnectorsRouteImport.update({
 const AppCalendarRoute = AppCalendarRouteImport.update({
   id: '/calendar',
   path: '/calendar',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppBusinessosRoute = AppBusinessosRouteImport.update({
+  id: '/businessos',
+  path: '/businessos',
   getParentRoute: () => AppRoute,
 } as any)
 const AppWorkspacesIndexRoute = AppWorkspacesIndexRouteImport.update({
@@ -317,6 +323,7 @@ export interface FileRoutesByFullPath {
   '/reset-password': typeof ResetPasswordRoute
   '/thumbnail': typeof ThumbnailRoute
   '/unsubscribe': typeof UnsubscribeRoute
+  '/businessos': typeof AppBusinessosRoute
   '/calendar': typeof AppCalendarRoute
   '/connectors': typeof AppConnectorsRoute
   '/dashboard': typeof AppDashboardRoute
@@ -367,6 +374,7 @@ export interface FileRoutesByTo {
   '/reset-password': typeof ResetPasswordRoute
   '/thumbnail': typeof ThumbnailRoute
   '/unsubscribe': typeof UnsubscribeRoute
+  '/businessos': typeof AppBusinessosRoute
   '/calendar': typeof AppCalendarRoute
   '/connectors': typeof AppConnectorsRoute
   '/dashboard': typeof AppDashboardRoute
@@ -419,6 +427,7 @@ export interface FileRoutesById {
   '/reset-password': typeof ResetPasswordRoute
   '/thumbnail': typeof ThumbnailRoute
   '/unsubscribe': typeof UnsubscribeRoute
+  '/_app/businessos': typeof AppBusinessosRoute
   '/_app/calendar': typeof AppCalendarRoute
   '/_app/connectors': typeof AppConnectorsRoute
   '/_app/dashboard': typeof AppDashboardRoute
@@ -471,6 +480,7 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/thumbnail'
     | '/unsubscribe'
+    | '/businessos'
     | '/calendar'
     | '/connectors'
     | '/dashboard'
@@ -521,6 +531,7 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/thumbnail'
     | '/unsubscribe'
+    | '/businessos'
     | '/calendar'
     | '/connectors'
     | '/dashboard'
@@ -572,6 +583,7 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/thumbnail'
     | '/unsubscribe'
+    | '/_app/businessos'
     | '/_app/calendar'
     | '/_app/connectors'
     | '/_app/dashboard'
@@ -797,6 +809,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppCalendarRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/businessos': {
+      id: '/_app/businessos'
+      path: '/businessos'
+      fullPath: '/businessos'
+      preLoaderRoute: typeof AppBusinessosRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/workspaces/': {
       id: '/_app/workspaces/'
       path: '/workspaces'
@@ -990,6 +1009,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface AppRouteChildren {
+  AppBusinessosRoute: typeof AppBusinessosRoute
   AppCalendarRoute: typeof AppCalendarRoute
   AppConnectorsRoute: typeof AppConnectorsRoute
   AppDashboardRoute: typeof AppDashboardRoute
@@ -1020,6 +1040,7 @@ interface AppRouteChildren {
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppBusinessosRoute: AppBusinessosRoute,
   AppCalendarRoute: AppCalendarRoute,
   AppConnectorsRoute: AppConnectorsRoute,
   AppDashboardRoute: AppDashboardRoute,

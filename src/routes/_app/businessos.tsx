@@ -7,11 +7,11 @@ export const Route = createFileRoute("/_app/businessos")({
 
 const SUB_NAV = [
   { to: "/businessos", key: "nav.command", exact: true },
-  { to: "/businessos/market", key: "nav.market" },
-  { to: "/businessos/sources", key: "nav.sources" },
-  { to: "/businessos/finance", key: "nav.finance" },
-  { to: "/businessos/actions", key: "nav.actions" },
-  { to: "/businessos/profile", key: "nav.profile" },
+  { to: "/businessos/market", key: "nav.market", exact: false },
+  { to: "/businessos/sources", key: "nav.sources", exact: false },
+  { to: "/businessos/finance", key: "nav.finance", exact: false },
+  { to: "/businessos/actions", key: "nav.actions", exact: false },
+  { to: "/businessos/profile", key: "nav.profile", exact: false },
 ] as const;
 
 function LangSwitch() {
@@ -46,7 +46,7 @@ function Shell() {
             <Link
               key={n.to}
               to={n.to}
-              activeOptions={{ exact: n.exact ?? false }}
+              activeOptions={{ exact: n.exact }}
               activeProps={{ className: "border-primary/50 bg-primary/15 text-primary" }}
               inactiveProps={{ className: "border-glass-border bg-glass/40 text-muted-foreground hover:text-foreground" }}
               className="rounded-full border px-3.5 py-1.5 text-xs transition"
