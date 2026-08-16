@@ -64,7 +64,7 @@ function ResetPasswordPage() {
       return;
     }
     toast.success("Password updated. You're signed in.");
-    nav({ to: "/dashboard", replace: true });
+    nav({ to: "/businessos", replace: true });
   };
 
   return (

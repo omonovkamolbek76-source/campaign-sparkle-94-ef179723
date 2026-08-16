@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "@tanstack/react-router";
+import { useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
@@ -10,7 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { IconLogout, IconSettings } from "@/components/ui-custom/CustomIcon";
+import { IconLogout } from "@/components/ui-custom/CustomIcon";
 
 function initialsFor(name: string | null | undefined, email: string | null | undefined) {
   const source = (name || "").trim();
@@ -95,13 +95,6 @@ export function UserMenu() {
             <div className="truncate text-xs text-muted-foreground">{user.email}</div>
           )}
         </DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem asChild className="cursor-pointer">
-          <Link to="/settings" className="flex items-center gap-2">
-            <IconSettings size={14} />
-            <span>Settings</span>
-          </Link>
-        </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem
           onSelect={async (e) => {

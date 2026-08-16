@@ -7,14 +7,14 @@
  */
 export const BRAND = {
   /** Full product name shown in lockups, titles, and email "from" lines. */
-  name: "Marketing Campaign Command Center",
+  name: "BusinessOS AI",
   /** Short label for tight spaces (mobile nav, collapsed sidebar tooltips). */
-  shortName: "MC3",
+  shortName: "BOS",
   /** One-line tagline used in headers and email footers. */
-  tagline: "Digital Marketing Campaign Starter",
+  tagline: "Tizimni o‘rganmang — tizim sizni tushunadi",
   /** Short marketing description for meta tags and onboarding. */
   description:
-    "Plan, launch, and track digital marketing campaigns end to end — launch checklists, standardized campaign names, UTM tracking links, and performance dashboards in one shared workspace.",
+    "AI business operating system for entrepreneurs in Uzbekistan — daily market prices, supplier comparison, finance agent and business plans in Uzbek, Russian and English.",
   /**
    * Placeholder domain used in example URLs (Commander AI input hints, etc.).
    * Keep this neutral — it should NOT match the email-sending domain.

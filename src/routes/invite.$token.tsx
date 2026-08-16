@@ -59,7 +59,7 @@ function AcceptInvite() {
       await supabase.from("profiles").update({ default_org_id: data as string }).eq("id", user.id);
     }
     toast.success(`Welcome to ${invite?.org_name}`);
-    nav({ to: "/dashboard", replace: true });
+    nav({ to: "/businessos", replace: true });
   };
 
   const needsAuth = !authLoading && (!user || user.is_anonymous);
@@ -104,10 +104,10 @@ function AcceptInvite() {
                 This invite has already been used.
               </p>
               <Link
-                to="/dashboard"
+                to="/businessos"
                 className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90"
               >
-                Go to dashboard <IconArrowRight size={14} />
+                Go to BusinessOS AI <IconArrowRight size={14} />
               </Link>
             </GlassPanel>
           )}

@@ -23,7 +23,7 @@ const HEX_CLIP = "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)"
 
 function LoginPage() {
   const search = Route.useSearch();
-  const redirectTo = search.redirect ?? "/dashboard";
+  const redirectTo = search.redirect ?? "/businessos";
   const nav = useNavigate();
   const { session, loading } = useAuth();
   const [mode, setMode] = useState<"signin" | "signup" | "forgot">(search.mode ?? "signin");
@@ -36,7 +36,7 @@ function LoginPage() {
 
   useEffect(() => {
     if (!loading && session) {
-      nav({ to: redirectTo as "/dashboard", replace: true });
+      nav({ to: redirectTo as "/businessos", replace: true });
     }
   }, [session, loading, nav, redirectTo]);
 
