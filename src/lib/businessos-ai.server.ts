@@ -127,7 +127,7 @@ export const COPILOT_TOOLS = [
   },
 ] as const;
 
-export type ToolTraceEntry = { tool: string; args: Record<string, unknown>; result: unknown };
+export type ToolTraceEntry = { tool: string; args: string; summary: string };
 
 export function loanMath(amount: number, annualRate: number, months: number) {
   const r = annualRate / 100 / 12;
@@ -288,7 +288,11 @@ export async function runCopilot(opts: {
         args = {};
       }
       const result = await runTool(opts.sb, opts.orgId, opts.userId, call.function.name, args);
-      trace.push({ tool: call.function.name, args, result });
+      trace.push({
+        tool: call.function.name,
+        args: JSON.stringify(args),
+        summary: JSON.stringify(result).slice(0, 800),
+      });
       messages.push({ role: "tool", tool_call_id: call.id, content: JSON.stringify(result).slice(0, 6000) });
     }
   }
