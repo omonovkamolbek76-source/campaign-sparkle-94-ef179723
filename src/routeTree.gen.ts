@@ -57,6 +57,7 @@ import { Route as AppBusinessosSourcesRouteImport } from './routes/_app/business
 import { Route as AppBusinessosProfileRouteImport } from './routes/_app/businessos/profile'
 import { Route as AppBusinessosMarketRouteImport } from './routes/_app/businessos/market'
 import { Route as AppBusinessosFinanceRouteImport } from './routes/_app/businessos/finance'
+import { Route as AppBusinessosActionsRouteImport } from './routes/_app/businessos/actions'
 import { Route as LovableEmailTransactionalSendRouteImport } from './routes/lovable/email/transactional/send'
 import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
@@ -305,6 +306,11 @@ const AppBusinessosFinanceRoute = AppBusinessosFinanceRouteImport.update({
   path: '/finance',
   getParentRoute: () => AppBusinessosRoute,
 } as any)
+const AppBusinessosActionsRoute = AppBusinessosActionsRouteImport.update({
+  id: '/actions',
+  path: '/actions',
+  getParentRoute: () => AppBusinessosRoute,
+} as any)
 const LovableEmailTransactionalSendRoute =
   LovableEmailTransactionalSendRouteImport.update({
     id: '/lovable/email/transactional/send',
@@ -369,6 +375,7 @@ export interface FileRoutesByFullPath {
   '/r/$slug': typeof RSlugRoute
   '/request/$orgSlug': typeof RequestOrgSlugRoute
   '/w/$token': typeof WTokenRoute
+  '/businessos/actions': typeof AppBusinessosActionsRoute
   '/businessos/finance': typeof AppBusinessosFinanceRoute
   '/businessos/market': typeof AppBusinessosMarketRoute
   '/businessos/profile': typeof AppBusinessosProfileRoute
@@ -424,6 +431,7 @@ export interface FileRoutesByTo {
   '/r/$slug': typeof RSlugRoute
   '/request/$orgSlug': typeof RequestOrgSlugRoute
   '/w/$token': typeof WTokenRoute
+  '/businessos/actions': typeof AppBusinessosActionsRoute
   '/businessos/finance': typeof AppBusinessosFinanceRoute
   '/businessos/market': typeof AppBusinessosMarketRoute
   '/businessos/profile': typeof AppBusinessosProfileRoute
@@ -482,6 +490,7 @@ export interface FileRoutesById {
   '/r/$slug': typeof RSlugRoute
   '/request/$orgSlug': typeof RequestOrgSlugRoute
   '/w/$token': typeof WTokenRoute
+  '/_app/businessos/actions': typeof AppBusinessosActionsRoute
   '/_app/businessos/finance': typeof AppBusinessosFinanceRoute
   '/_app/businessos/market': typeof AppBusinessosMarketRoute
   '/_app/businessos/profile': typeof AppBusinessosProfileRoute
@@ -540,6 +549,7 @@ export interface FileRouteTypes {
     | '/r/$slug'
     | '/request/$orgSlug'
     | '/w/$token'
+    | '/businessos/actions'
     | '/businessos/finance'
     | '/businessos/market'
     | '/businessos/profile'
@@ -595,6 +605,7 @@ export interface FileRouteTypes {
     | '/r/$slug'
     | '/request/$orgSlug'
     | '/w/$token'
+    | '/businessos/actions'
     | '/businessos/finance'
     | '/businessos/market'
     | '/businessos/profile'
@@ -652,6 +663,7 @@ export interface FileRouteTypes {
     | '/r/$slug'
     | '/request/$orgSlug'
     | '/w/$token'
+    | '/_app/businessos/actions'
     | '/_app/businessos/finance'
     | '/_app/businessos/market'
     | '/_app/businessos/profile'
@@ -1049,6 +1061,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppBusinessosFinanceRouteImport
       parentRoute: typeof AppBusinessosRoute
     }
+    '/_app/businessos/actions': {
+      id: '/_app/businessos/actions'
+      path: '/actions'
+      fullPath: '/businessos/actions'
+      preLoaderRoute: typeof AppBusinessosActionsRouteImport
+      parentRoute: typeof AppBusinessosRoute
+    }
     '/lovable/email/transactional/send': {
       id: '/lovable/email/transactional/send'
       path: '/lovable/email/transactional/send'
@@ -1102,6 +1121,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface AppBusinessosRouteChildren {
+  AppBusinessosActionsRoute: typeof AppBusinessosActionsRoute
   AppBusinessosFinanceRoute: typeof AppBusinessosFinanceRoute
   AppBusinessosMarketRoute: typeof AppBusinessosMarketRoute
   AppBusinessosProfileRoute: typeof AppBusinessosProfileRoute
@@ -1110,6 +1130,7 @@ interface AppBusinessosRouteChildren {
 }
 
 const AppBusinessosRouteChildren: AppBusinessosRouteChildren = {
+  AppBusinessosActionsRoute: AppBusinessosActionsRoute,
   AppBusinessosFinanceRoute: AppBusinessosFinanceRoute,
   AppBusinessosMarketRoute: AppBusinessosMarketRoute,
   AppBusinessosProfileRoute: AppBusinessosProfileRoute,
