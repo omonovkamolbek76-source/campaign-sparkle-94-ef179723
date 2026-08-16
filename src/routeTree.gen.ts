@@ -53,6 +53,7 @@ import { Route as AppToolsCampaignCreatorRouteImport } from './routes/_app/tools
 import { Route as AppToolsAllUtmsRouteImport } from './routes/_app/tools/all-utms'
 import { Route as AppToolsSplatRouteImport } from './routes/_app/tools/$'
 import { Route as AppCampaignsIdRouteImport } from './routes/_app/campaigns/$id'
+import { Route as AppBusinessosMarketRouteImport } from './routes/_app/businessos/market'
 import { Route as LovableEmailTransactionalSendRouteImport } from './routes/lovable/email/transactional/send'
 import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
@@ -281,6 +282,11 @@ const AppCampaignsIdRoute = AppCampaignsIdRouteImport.update({
   path: '/campaigns/$id',
   getParentRoute: () => AppRoute,
 } as any)
+const AppBusinessosMarketRoute = AppBusinessosMarketRouteImport.update({
+  id: '/market',
+  path: '/market',
+  getParentRoute: () => AppBusinessosRoute,
+} as any)
 const LovableEmailTransactionalSendRoute =
   LovableEmailTransactionalSendRouteImport.update({
     id: '/lovable/email/transactional/send',
@@ -345,6 +351,7 @@ export interface FileRoutesByFullPath {
   '/r/$slug': typeof RSlugRoute
   '/request/$orgSlug': typeof RequestOrgSlugRoute
   '/w/$token': typeof WTokenRoute
+  '/businessos/market': typeof AppBusinessosMarketRoute
   '/campaigns/$id': typeof AppCampaignsIdRoute
   '/tools/$': typeof AppToolsSplatRoute
   '/tools/all-utms': typeof AppToolsAllUtmsRoute
@@ -396,6 +403,7 @@ export interface FileRoutesByTo {
   '/r/$slug': typeof RSlugRoute
   '/request/$orgSlug': typeof RequestOrgSlugRoute
   '/w/$token': typeof WTokenRoute
+  '/businessos/market': typeof AppBusinessosMarketRoute
   '/campaigns/$id': typeof AppCampaignsIdRoute
   '/tools/$': typeof AppToolsSplatRoute
   '/tools/all-utms': typeof AppToolsAllUtmsRoute
@@ -450,6 +458,7 @@ export interface FileRoutesById {
   '/r/$slug': typeof RSlugRoute
   '/request/$orgSlug': typeof RequestOrgSlugRoute
   '/w/$token': typeof WTokenRoute
+  '/_app/businessos/market': typeof AppBusinessosMarketRoute
   '/_app/campaigns/$id': typeof AppCampaignsIdRoute
   '/_app/tools/$': typeof AppToolsSplatRoute
   '/_app/tools/all-utms': typeof AppToolsAllUtmsRoute
@@ -504,6 +513,7 @@ export interface FileRouteTypes {
     | '/r/$slug'
     | '/request/$orgSlug'
     | '/w/$token'
+    | '/businessos/market'
     | '/campaigns/$id'
     | '/tools/$'
     | '/tools/all-utms'
@@ -555,6 +565,7 @@ export interface FileRouteTypes {
     | '/r/$slug'
     | '/request/$orgSlug'
     | '/w/$token'
+    | '/businessos/market'
     | '/campaigns/$id'
     | '/tools/$'
     | '/tools/all-utms'
@@ -608,6 +619,7 @@ export interface FileRouteTypes {
     | '/r/$slug'
     | '/request/$orgSlug'
     | '/w/$token'
+    | '/_app/businessos/market'
     | '/_app/campaigns/$id'
     | '/_app/tools/$'
     | '/_app/tools/all-utms'
@@ -973,6 +985,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppCampaignsIdRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/businessos/market': {
+      id: '/_app/businessos/market'
+      path: '/market'
+      fullPath: '/businessos/market'
+      preLoaderRoute: typeof AppBusinessosMarketRouteImport
+      parentRoute: typeof AppBusinessosRoute
+    }
     '/lovable/email/transactional/send': {
       id: '/lovable/email/transactional/send'
       path: '/lovable/email/transactional/send'
@@ -1026,10 +1045,12 @@ declare module '@tanstack/react-router' {
 }
 
 interface AppBusinessosRouteChildren {
+  AppBusinessosMarketRoute: typeof AppBusinessosMarketRoute
   AppBusinessosIndexRoute: typeof AppBusinessosIndexRoute
 }
 
 const AppBusinessosRouteChildren: AppBusinessosRouteChildren = {
+  AppBusinessosMarketRoute: AppBusinessosMarketRoute,
   AppBusinessosIndexRoute: AppBusinessosIndexRoute,
 }
 
