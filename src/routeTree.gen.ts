@@ -53,6 +53,7 @@ import { Route as AppToolsCampaignCreatorRouteImport } from './routes/_app/tools
 import { Route as AppToolsAllUtmsRouteImport } from './routes/_app/tools/all-utms'
 import { Route as AppToolsSplatRouteImport } from './routes/_app/tools/$'
 import { Route as AppCampaignsIdRouteImport } from './routes/_app/campaigns/$id'
+import { Route as AppBusinessosSourcesRouteImport } from './routes/_app/businessos/sources'
 import { Route as AppBusinessosMarketRouteImport } from './routes/_app/businessos/market'
 import { Route as LovableEmailTransactionalSendRouteImport } from './routes/lovable/email/transactional/send'
 import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
@@ -282,6 +283,11 @@ const AppCampaignsIdRoute = AppCampaignsIdRouteImport.update({
   path: '/campaigns/$id',
   getParentRoute: () => AppRoute,
 } as any)
+const AppBusinessosSourcesRoute = AppBusinessosSourcesRouteImport.update({
+  id: '/sources',
+  path: '/sources',
+  getParentRoute: () => AppBusinessosRoute,
+} as any)
 const AppBusinessosMarketRoute = AppBusinessosMarketRouteImport.update({
   id: '/market',
   path: '/market',
@@ -352,6 +358,7 @@ export interface FileRoutesByFullPath {
   '/request/$orgSlug': typeof RequestOrgSlugRoute
   '/w/$token': typeof WTokenRoute
   '/businessos/market': typeof AppBusinessosMarketRoute
+  '/businessos/sources': typeof AppBusinessosSourcesRoute
   '/campaigns/$id': typeof AppCampaignsIdRoute
   '/tools/$': typeof AppToolsSplatRoute
   '/tools/all-utms': typeof AppToolsAllUtmsRoute
@@ -404,6 +411,7 @@ export interface FileRoutesByTo {
   '/request/$orgSlug': typeof RequestOrgSlugRoute
   '/w/$token': typeof WTokenRoute
   '/businessos/market': typeof AppBusinessosMarketRoute
+  '/businessos/sources': typeof AppBusinessosSourcesRoute
   '/campaigns/$id': typeof AppCampaignsIdRoute
   '/tools/$': typeof AppToolsSplatRoute
   '/tools/all-utms': typeof AppToolsAllUtmsRoute
@@ -459,6 +467,7 @@ export interface FileRoutesById {
   '/request/$orgSlug': typeof RequestOrgSlugRoute
   '/w/$token': typeof WTokenRoute
   '/_app/businessos/market': typeof AppBusinessosMarketRoute
+  '/_app/businessos/sources': typeof AppBusinessosSourcesRoute
   '/_app/campaigns/$id': typeof AppCampaignsIdRoute
   '/_app/tools/$': typeof AppToolsSplatRoute
   '/_app/tools/all-utms': typeof AppToolsAllUtmsRoute
@@ -514,6 +523,7 @@ export interface FileRouteTypes {
     | '/request/$orgSlug'
     | '/w/$token'
     | '/businessos/market'
+    | '/businessos/sources'
     | '/campaigns/$id'
     | '/tools/$'
     | '/tools/all-utms'
@@ -566,6 +576,7 @@ export interface FileRouteTypes {
     | '/request/$orgSlug'
     | '/w/$token'
     | '/businessos/market'
+    | '/businessos/sources'
     | '/campaigns/$id'
     | '/tools/$'
     | '/tools/all-utms'
@@ -620,6 +631,7 @@ export interface FileRouteTypes {
     | '/request/$orgSlug'
     | '/w/$token'
     | '/_app/businessos/market'
+    | '/_app/businessos/sources'
     | '/_app/campaigns/$id'
     | '/_app/tools/$'
     | '/_app/tools/all-utms'
@@ -985,6 +997,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppCampaignsIdRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/businessos/sources': {
+      id: '/_app/businessos/sources'
+      path: '/sources'
+      fullPath: '/businessos/sources'
+      preLoaderRoute: typeof AppBusinessosSourcesRouteImport
+      parentRoute: typeof AppBusinessosRoute
+    }
     '/_app/businessos/market': {
       id: '/_app/businessos/market'
       path: '/market'
@@ -1046,11 +1065,13 @@ declare module '@tanstack/react-router' {
 
 interface AppBusinessosRouteChildren {
   AppBusinessosMarketRoute: typeof AppBusinessosMarketRoute
+  AppBusinessosSourcesRoute: typeof AppBusinessosSourcesRoute
   AppBusinessosIndexRoute: typeof AppBusinessosIndexRoute
 }
 
 const AppBusinessosRouteChildren: AppBusinessosRouteChildren = {
   AppBusinessosMarketRoute: AppBusinessosMarketRoute,
+  AppBusinessosSourcesRoute: AppBusinessosSourcesRoute,
   AppBusinessosIndexRoute: AppBusinessosIndexRoute,
 }
 
