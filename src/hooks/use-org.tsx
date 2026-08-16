@@ -39,6 +39,20 @@ function cachedOrgIdFor(userId: string | null) {
   return userId && orgCache.userId === userId && orgCache.loaded ? orgCache.orgId : null;
 }
 
+async function provisionOrg(userId: string) {
+  try {
+    const { ensureWorkspace } = await import("@/lib/workspace.functions");
+    const { orgId } = await ensureWorkspace();
+    if (orgCache.userId === userId && orgId) {
+      orgCache.orgId = orgId;
+      orgCache.loaded = true;
+      notifyOrgListeners();
+    }
+  } catch {
+    /* ignore — retried on next load */
+  }
+}
+
 async function loadOrgId(userId: string) {
   if (orgCache.userId !== userId) {
     orgCache.userId = userId;
@@ -58,12 +72,14 @@ async function loadOrgId(userId: string) {
       if (error) {
         // Do not mark loaded on error — allow future retries.
         orgCache.promise = null;
+        void provisionOrg(userId);
         return null;
       }
       orgCache.orgId = data?.default_org_id ?? null;
       orgCache.loaded = true;
       orgCache.promise = null;
       notifyOrgListeners();
+      if (!orgCache.orgId) void provisionOrg(userId);
       return orgCache.orgId;
     })
     .catch(() => {
