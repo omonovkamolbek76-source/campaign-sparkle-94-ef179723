@@ -148,7 +148,47 @@ const DICT: Dict = {
   "common.generate": ["Yaratish", "Сгенерировать", "Generate"],
   "common.generating": ["Yaratilmoqda…", "Генерация…", "Generating…"],
   "common.open": ["Ochish", "Открыть", "Open"],
+
+  "shell.signOut": ["Chiqish", "Выйти", "Sign out"],
+  "shell.theme": ["Rejim", "Тема", "Theme"],
+
+  "land.badge": [
+    "O‘zbekiston tadbirkorlari uchun AI",
+    "AI для предпринимателей Узбекистана",
+    "AI for entrepreneurs in Uzbekistan",
+  ],
+  "land.title": [
+    "Biznesingiz uchun sun’iy intellekt operatsion tizimi",
+    "Операционная система с ИИ для вашего бизнеса",
+    "An AI operating system for your business",
+  ],
+  "land.sub": [
+    "Bozor narxlari, yetkazib beruvchilar, moliya va biznes-reja — bitta savol bilan. Forma yo‘q, faqat javob.",
+    "Цены рынка, поставщики, финансы и бизнес-план — одним вопросом. Никаких форм, только ответ.",
+    "Market prices, suppliers, finance and business plans — from one question. No forms, just answers.",
+  ],
+  "land.cta": ["Boshlash", "Начать", "Get started"],
+  "land.signin": ["Kirish", "Войти", "Sign in"],
+  "land.f1t": ["Bozor razvedkasi", "Аналитика рынка", "Market intelligence"],
+  "land.f1d": [
+    "Bozor sotuvchilari, TV va radio kuzatuvidan kunlik narxlar.",
+    "Ежедневные цены от продавцов, ТВ и радио мониторинга.",
+    "Daily prices from vendors, TV and radio monitoring.",
+  ],
+  "land.f2t": ["Moliya agenti", "Финансовый агент", "Finance agent"],
+  "land.f2d": [
+    "Kredit tayyorligi, oylik to‘lov va biznes-reja.",
+    "Кредитная готовность, платежи и бизнес-план.",
+    "Credit readiness, payments and business plans.",
+  ],
+  "land.f3t": ["Nol-forma UX", "Zero-form UX", "Zero-form UX"],
+  "land.f3d": [
+    "Bitta savol yozing — AI qolganini o‘zi bajaradi.",
+    "Задайте вопрос — остальное сделает AI.",
+    "Ask one question — the AI does the rest.",
+  ],
 };
+
 
 const IDX: Record<Lang, 0 | 1 | 2> = { uz: 0, ru: 1, en: 2 };
 const STORAGE_KEY = "businessos.lang";
