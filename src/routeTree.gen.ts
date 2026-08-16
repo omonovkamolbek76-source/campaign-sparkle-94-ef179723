@@ -55,6 +55,7 @@ import { Route as AppToolsSplatRouteImport } from './routes/_app/tools/$'
 import { Route as AppCampaignsIdRouteImport } from './routes/_app/campaigns/$id'
 import { Route as AppBusinessosSourcesRouteImport } from './routes/_app/businessos/sources'
 import { Route as AppBusinessosMarketRouteImport } from './routes/_app/businessos/market'
+import { Route as AppBusinessosFinanceRouteImport } from './routes/_app/businessos/finance'
 import { Route as LovableEmailTransactionalSendRouteImport } from './routes/lovable/email/transactional/send'
 import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
@@ -293,6 +294,11 @@ const AppBusinessosMarketRoute = AppBusinessosMarketRouteImport.update({
   path: '/market',
   getParentRoute: () => AppBusinessosRoute,
 } as any)
+const AppBusinessosFinanceRoute = AppBusinessosFinanceRouteImport.update({
+  id: '/finance',
+  path: '/finance',
+  getParentRoute: () => AppBusinessosRoute,
+} as any)
 const LovableEmailTransactionalSendRoute =
   LovableEmailTransactionalSendRouteImport.update({
     id: '/lovable/email/transactional/send',
@@ -357,6 +363,7 @@ export interface FileRoutesByFullPath {
   '/r/$slug': typeof RSlugRoute
   '/request/$orgSlug': typeof RequestOrgSlugRoute
   '/w/$token': typeof WTokenRoute
+  '/businessos/finance': typeof AppBusinessosFinanceRoute
   '/businessos/market': typeof AppBusinessosMarketRoute
   '/businessos/sources': typeof AppBusinessosSourcesRoute
   '/campaigns/$id': typeof AppCampaignsIdRoute
@@ -410,6 +417,7 @@ export interface FileRoutesByTo {
   '/r/$slug': typeof RSlugRoute
   '/request/$orgSlug': typeof RequestOrgSlugRoute
   '/w/$token': typeof WTokenRoute
+  '/businessos/finance': typeof AppBusinessosFinanceRoute
   '/businessos/market': typeof AppBusinessosMarketRoute
   '/businessos/sources': typeof AppBusinessosSourcesRoute
   '/campaigns/$id': typeof AppCampaignsIdRoute
@@ -466,6 +474,7 @@ export interface FileRoutesById {
   '/r/$slug': typeof RSlugRoute
   '/request/$orgSlug': typeof RequestOrgSlugRoute
   '/w/$token': typeof WTokenRoute
+  '/_app/businessos/finance': typeof AppBusinessosFinanceRoute
   '/_app/businessos/market': typeof AppBusinessosMarketRoute
   '/_app/businessos/sources': typeof AppBusinessosSourcesRoute
   '/_app/campaigns/$id': typeof AppCampaignsIdRoute
@@ -522,6 +531,7 @@ export interface FileRouteTypes {
     | '/r/$slug'
     | '/request/$orgSlug'
     | '/w/$token'
+    | '/businessos/finance'
     | '/businessos/market'
     | '/businessos/sources'
     | '/campaigns/$id'
@@ -575,6 +585,7 @@ export interface FileRouteTypes {
     | '/r/$slug'
     | '/request/$orgSlug'
     | '/w/$token'
+    | '/businessos/finance'
     | '/businessos/market'
     | '/businessos/sources'
     | '/campaigns/$id'
@@ -630,6 +641,7 @@ export interface FileRouteTypes {
     | '/r/$slug'
     | '/request/$orgSlug'
     | '/w/$token'
+    | '/_app/businessos/finance'
     | '/_app/businessos/market'
     | '/_app/businessos/sources'
     | '/_app/campaigns/$id'
@@ -1011,6 +1023,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppBusinessosMarketRouteImport
       parentRoute: typeof AppBusinessosRoute
     }
+    '/_app/businessos/finance': {
+      id: '/_app/businessos/finance'
+      path: '/finance'
+      fullPath: '/businessos/finance'
+      preLoaderRoute: typeof AppBusinessosFinanceRouteImport
+      parentRoute: typeof AppBusinessosRoute
+    }
     '/lovable/email/transactional/send': {
       id: '/lovable/email/transactional/send'
       path: '/lovable/email/transactional/send'
@@ -1064,12 +1083,14 @@ declare module '@tanstack/react-router' {
 }
 
 interface AppBusinessosRouteChildren {
+  AppBusinessosFinanceRoute: typeof AppBusinessosFinanceRoute
   AppBusinessosMarketRoute: typeof AppBusinessosMarketRoute
   AppBusinessosSourcesRoute: typeof AppBusinessosSourcesRoute
   AppBusinessosIndexRoute: typeof AppBusinessosIndexRoute
 }
 
 const AppBusinessosRouteChildren: AppBusinessosRouteChildren = {
+  AppBusinessosFinanceRoute: AppBusinessosFinanceRoute,
   AppBusinessosMarketRoute: AppBusinessosMarketRoute,
   AppBusinessosSourcesRoute: AppBusinessosSourcesRoute,
   AppBusinessosIndexRoute: AppBusinessosIndexRoute,
