@@ -21,38 +21,11 @@ import { Route as RequestOrgSlugRouteImport } from './routes/request.$orgSlug'
 import { Route as RSlugRouteImport } from './routes/r.$slug'
 import { Route as InviteTokenRouteImport } from './routes/invite.$token'
 import { Route as EmailUnsubscribeRouteImport } from './routes/email/unsubscribe'
-import { Route as AppWelcomeRouteImport } from './routes/_app/welcome'
-import { Route as AppTemplatesRouteImport } from './routes/_app/templates'
-import { Route as AppSettingsRouteImport } from './routes/_app/settings'
-import { Route as AppRequestsRouteImport } from './routes/_app/requests'
-import { Route as AppLeadsRouteImport } from './routes/_app/leads'
-import { Route as AppIntegrationsRouteImport } from './routes/_app/integrations'
-import { Route as AppFunnelRouteImport } from './routes/_app/funnel'
-import { Route as AppDashboardRouteImport } from './routes/_app/dashboard'
-import { Route as AppConnectorsRouteImport } from './routes/_app/connectors'
-import { Route as AppCalendarRouteImport } from './routes/_app/calendar'
 import { Route as AppBusinessosRouteImport } from './routes/_app/businessos'
-import { Route as AppWorkspacesIndexRouteImport } from './routes/_app/workspaces/index'
-import { Route as AppToolsIndexRouteImport } from './routes/_app/tools/index'
-import { Route as AppCampaignsIndexRouteImport } from './routes/_app/campaigns/index'
 import { Route as AppBusinessosIndexRouteImport } from './routes/_app/businessos/index'
 import { Route as RequestStatusTokenRouteImport } from './routes/request.status.$token'
 import { Route as LovableEmailSuppressionRouteImport } from './routes/lovable/email/suppression'
 import { Route as IntakeOrgSlugHackathonRouteImport } from './routes/intake.$orgSlug.hackathon'
-import { Route as AppWorkspacesIdRouteImport } from './routes/_app/workspaces/$id'
-import { Route as AppToolsUtmRouteImport } from './routes/_app/tools/utm'
-import { Route as AppToolsTaxonomyRouteImport } from './routes/_app/tools/taxonomy'
-import { Route as AppToolsListCleanerRouteImport } from './routes/_app/tools/list-cleaner'
-import { Route as AppToolsImportRouteImport } from './routes/_app/tools/import'
-import { Route as AppToolsFunnelTargetsRouteImport } from './routes/_app/tools/funnel-targets'
-import { Route as AppToolsEventsRouteImport } from './routes/_app/tools/events'
-import { Route as AppToolsEventIntakeRouteImport } from './routes/_app/tools/event-intake'
-import { Route as AppToolsCampaignPerformanceRouteImport } from './routes/_app/tools/campaign-performance'
-import { Route as AppToolsCampaignInABoxRouteImport } from './routes/_app/tools/campaign-in-a-box'
-import { Route as AppToolsCampaignCreatorRouteImport } from './routes/_app/tools/campaign-creator'
-import { Route as AppToolsAllUtmsRouteImport } from './routes/_app/tools/all-utms'
-import { Route as AppToolsSplatRouteImport } from './routes/_app/tools/$'
-import { Route as AppCampaignsIdRouteImport } from './routes/_app/campaigns/$id'
 import { Route as AppBusinessosSourcesRouteImport } from './routes/_app/businessos/sources'
 import { Route as AppBusinessosProfileRouteImport } from './routes/_app/businessos/profile'
 import { Route as AppBusinessosMarketRouteImport } from './routes/_app/businessos/market'
@@ -125,74 +98,9 @@ const EmailUnsubscribeRoute = EmailUnsubscribeRouteImport.update({
   path: '/email/unsubscribe',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AppWelcomeRoute = AppWelcomeRouteImport.update({
-  id: '/welcome',
-  path: '/welcome',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppTemplatesRoute = AppTemplatesRouteImport.update({
-  id: '/templates',
-  path: '/templates',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppSettingsRoute = AppSettingsRouteImport.update({
-  id: '/settings',
-  path: '/settings',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppRequestsRoute = AppRequestsRouteImport.update({
-  id: '/requests',
-  path: '/requests',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppLeadsRoute = AppLeadsRouteImport.update({
-  id: '/leads',
-  path: '/leads',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppIntegrationsRoute = AppIntegrationsRouteImport.update({
-  id: '/integrations',
-  path: '/integrations',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppFunnelRoute = AppFunnelRouteImport.update({
-  id: '/funnel',
-  path: '/funnel',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppDashboardRoute = AppDashboardRouteImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppConnectorsRoute = AppConnectorsRouteImport.update({
-  id: '/connectors',
-  path: '/connectors',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppCalendarRoute = AppCalendarRouteImport.update({
-  id: '/calendar',
-  path: '/calendar',
-  getParentRoute: () => AppRoute,
-} as any)
 const AppBusinessosRoute = AppBusinessosRouteImport.update({
   id: '/businessos',
   path: '/businessos',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppWorkspacesIndexRoute = AppWorkspacesIndexRouteImport.update({
-  id: '/workspaces/',
-  path: '/workspaces/',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppToolsIndexRoute = AppToolsIndexRouteImport.update({
-  id: '/tools/',
-  path: '/tools/',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppCampaignsIndexRoute = AppCampaignsIndexRouteImport.update({
-  id: '/campaigns/',
-  path: '/campaigns/',
   getParentRoute: () => AppRoute,
 } as any)
 const AppBusinessosIndexRoute = AppBusinessosIndexRouteImport.update({
@@ -214,77 +122,6 @@ const IntakeOrgSlugHackathonRoute = IntakeOrgSlugHackathonRouteImport.update({
   id: '/intake/$orgSlug/hackathon',
   path: '/intake/$orgSlug/hackathon',
   getParentRoute: () => rootRouteImport,
-} as any)
-const AppWorkspacesIdRoute = AppWorkspacesIdRouteImport.update({
-  id: '/workspaces/$id',
-  path: '/workspaces/$id',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppToolsUtmRoute = AppToolsUtmRouteImport.update({
-  id: '/tools/utm',
-  path: '/tools/utm',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppToolsTaxonomyRoute = AppToolsTaxonomyRouteImport.update({
-  id: '/tools/taxonomy',
-  path: '/tools/taxonomy',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppToolsListCleanerRoute = AppToolsListCleanerRouteImport.update({
-  id: '/tools/list-cleaner',
-  path: '/tools/list-cleaner',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppToolsImportRoute = AppToolsImportRouteImport.update({
-  id: '/tools/import',
-  path: '/tools/import',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppToolsFunnelTargetsRoute = AppToolsFunnelTargetsRouteImport.update({
-  id: '/tools/funnel-targets',
-  path: '/tools/funnel-targets',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppToolsEventsRoute = AppToolsEventsRouteImport.update({
-  id: '/tools/events',
-  path: '/tools/events',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppToolsEventIntakeRoute = AppToolsEventIntakeRouteImport.update({
-  id: '/tools/event-intake',
-  path: '/tools/event-intake',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppToolsCampaignPerformanceRoute =
-  AppToolsCampaignPerformanceRouteImport.update({
-    id: '/tools/campaign-performance',
-    path: '/tools/campaign-performance',
-    getParentRoute: () => AppRoute,
-  } as any)
-const AppToolsCampaignInABoxRoute = AppToolsCampaignInABoxRouteImport.update({
-  id: '/tools/campaign-in-a-box',
-  path: '/tools/campaign-in-a-box',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppToolsCampaignCreatorRoute = AppToolsCampaignCreatorRouteImport.update({
-  id: '/tools/campaign-creator',
-  path: '/tools/campaign-creator',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppToolsAllUtmsRoute = AppToolsAllUtmsRouteImport.update({
-  id: '/tools/all-utms',
-  path: '/tools/all-utms',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppToolsSplatRoute = AppToolsSplatRouteImport.update({
-  id: '/tools/$',
-  path: '/tools/$',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppCampaignsIdRoute = AppCampaignsIdRouteImport.update({
-  id: '/campaigns/$id',
-  path: '/campaigns/$id',
-  getParentRoute: () => AppRoute,
 } as any)
 const AppBusinessosSourcesRoute = AppBusinessosSourcesRouteImport.update({
   id: '/sources',
@@ -360,16 +197,6 @@ export interface FileRoutesByFullPath {
   '/thumbnail': typeof ThumbnailRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/businessos': typeof AppBusinessosRouteWithChildren
-  '/calendar': typeof AppCalendarRoute
-  '/connectors': typeof AppConnectorsRoute
-  '/dashboard': typeof AppDashboardRoute
-  '/funnel': typeof AppFunnelRoute
-  '/integrations': typeof AppIntegrationsRoute
-  '/leads': typeof AppLeadsRoute
-  '/requests': typeof AppRequestsRoute
-  '/settings': typeof AppSettingsRoute
-  '/templates': typeof AppTemplatesRoute
-  '/welcome': typeof AppWelcomeRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/invite/$token': typeof InviteTokenRoute
   '/r/$slug': typeof RSlugRoute
@@ -380,27 +207,10 @@ export interface FileRoutesByFullPath {
   '/businessos/market': typeof AppBusinessosMarketRoute
   '/businessos/profile': typeof AppBusinessosProfileRoute
   '/businessos/sources': typeof AppBusinessosSourcesRoute
-  '/campaigns/$id': typeof AppCampaignsIdRoute
-  '/tools/$': typeof AppToolsSplatRoute
-  '/tools/all-utms': typeof AppToolsAllUtmsRoute
-  '/tools/campaign-creator': typeof AppToolsCampaignCreatorRoute
-  '/tools/campaign-in-a-box': typeof AppToolsCampaignInABoxRoute
-  '/tools/campaign-performance': typeof AppToolsCampaignPerformanceRoute
-  '/tools/event-intake': typeof AppToolsEventIntakeRoute
-  '/tools/events': typeof AppToolsEventsRoute
-  '/tools/funnel-targets': typeof AppToolsFunnelTargetsRoute
-  '/tools/import': typeof AppToolsImportRoute
-  '/tools/list-cleaner': typeof AppToolsListCleanerRoute
-  '/tools/taxonomy': typeof AppToolsTaxonomyRoute
-  '/tools/utm': typeof AppToolsUtmRoute
-  '/workspaces/$id': typeof AppWorkspacesIdRoute
   '/intake/$orgSlug/hackathon': typeof IntakeOrgSlugHackathonRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/request/status/$token': typeof RequestStatusTokenRoute
   '/businessos/': typeof AppBusinessosIndexRoute
-  '/campaigns/': typeof AppCampaignsIndexRoute
-  '/tools/': typeof AppToolsIndexRoute
-  '/workspaces/': typeof AppWorkspacesIndexRoute
   '/api/public/cron/cluster-retros': typeof ApiPublicCronClusterRetrosRoute
   '/api/public/cron/daily-digest': typeof ApiPublicCronDailyDigestRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -416,16 +226,6 @@ export interface FileRoutesByTo {
   '/reset-password': typeof ResetPasswordRoute
   '/thumbnail': typeof ThumbnailRoute
   '/unsubscribe': typeof UnsubscribeRoute
-  '/calendar': typeof AppCalendarRoute
-  '/connectors': typeof AppConnectorsRoute
-  '/dashboard': typeof AppDashboardRoute
-  '/funnel': typeof AppFunnelRoute
-  '/integrations': typeof AppIntegrationsRoute
-  '/leads': typeof AppLeadsRoute
-  '/requests': typeof AppRequestsRoute
-  '/settings': typeof AppSettingsRoute
-  '/templates': typeof AppTemplatesRoute
-  '/welcome': typeof AppWelcomeRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/invite/$token': typeof InviteTokenRoute
   '/r/$slug': typeof RSlugRoute
@@ -436,27 +236,10 @@ export interface FileRoutesByTo {
   '/businessos/market': typeof AppBusinessosMarketRoute
   '/businessos/profile': typeof AppBusinessosProfileRoute
   '/businessos/sources': typeof AppBusinessosSourcesRoute
-  '/campaigns/$id': typeof AppCampaignsIdRoute
-  '/tools/$': typeof AppToolsSplatRoute
-  '/tools/all-utms': typeof AppToolsAllUtmsRoute
-  '/tools/campaign-creator': typeof AppToolsCampaignCreatorRoute
-  '/tools/campaign-in-a-box': typeof AppToolsCampaignInABoxRoute
-  '/tools/campaign-performance': typeof AppToolsCampaignPerformanceRoute
-  '/tools/event-intake': typeof AppToolsEventIntakeRoute
-  '/tools/events': typeof AppToolsEventsRoute
-  '/tools/funnel-targets': typeof AppToolsFunnelTargetsRoute
-  '/tools/import': typeof AppToolsImportRoute
-  '/tools/list-cleaner': typeof AppToolsListCleanerRoute
-  '/tools/taxonomy': typeof AppToolsTaxonomyRoute
-  '/tools/utm': typeof AppToolsUtmRoute
-  '/workspaces/$id': typeof AppWorkspacesIdRoute
   '/intake/$orgSlug/hackathon': typeof IntakeOrgSlugHackathonRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/request/status/$token': typeof RequestStatusTokenRoute
   '/businessos': typeof AppBusinessosIndexRoute
-  '/campaigns': typeof AppCampaignsIndexRoute
-  '/tools': typeof AppToolsIndexRoute
-  '/workspaces': typeof AppWorkspacesIndexRoute
   '/api/public/cron/cluster-retros': typeof ApiPublicCronClusterRetrosRoute
   '/api/public/cron/daily-digest': typeof ApiPublicCronDailyDigestRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -475,16 +258,6 @@ export interface FileRoutesById {
   '/thumbnail': typeof ThumbnailRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/_app/businessos': typeof AppBusinessosRouteWithChildren
-  '/_app/calendar': typeof AppCalendarRoute
-  '/_app/connectors': typeof AppConnectorsRoute
-  '/_app/dashboard': typeof AppDashboardRoute
-  '/_app/funnel': typeof AppFunnelRoute
-  '/_app/integrations': typeof AppIntegrationsRoute
-  '/_app/leads': typeof AppLeadsRoute
-  '/_app/requests': typeof AppRequestsRoute
-  '/_app/settings': typeof AppSettingsRoute
-  '/_app/templates': typeof AppTemplatesRoute
-  '/_app/welcome': typeof AppWelcomeRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/invite/$token': typeof InviteTokenRoute
   '/r/$slug': typeof RSlugRoute
@@ -495,27 +268,10 @@ export interface FileRoutesById {
   '/_app/businessos/market': typeof AppBusinessosMarketRoute
   '/_app/businessos/profile': typeof AppBusinessosProfileRoute
   '/_app/businessos/sources': typeof AppBusinessosSourcesRoute
-  '/_app/campaigns/$id': typeof AppCampaignsIdRoute
-  '/_app/tools/$': typeof AppToolsSplatRoute
-  '/_app/tools/all-utms': typeof AppToolsAllUtmsRoute
-  '/_app/tools/campaign-creator': typeof AppToolsCampaignCreatorRoute
-  '/_app/tools/campaign-in-a-box': typeof AppToolsCampaignInABoxRoute
-  '/_app/tools/campaign-performance': typeof AppToolsCampaignPerformanceRoute
-  '/_app/tools/event-intake': typeof AppToolsEventIntakeRoute
-  '/_app/tools/events': typeof AppToolsEventsRoute
-  '/_app/tools/funnel-targets': typeof AppToolsFunnelTargetsRoute
-  '/_app/tools/import': typeof AppToolsImportRoute
-  '/_app/tools/list-cleaner': typeof AppToolsListCleanerRoute
-  '/_app/tools/taxonomy': typeof AppToolsTaxonomyRoute
-  '/_app/tools/utm': typeof AppToolsUtmRoute
-  '/_app/workspaces/$id': typeof AppWorkspacesIdRoute
   '/intake/$orgSlug/hackathon': typeof IntakeOrgSlugHackathonRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/request/status/$token': typeof RequestStatusTokenRoute
   '/_app/businessos/': typeof AppBusinessosIndexRoute
-  '/_app/campaigns/': typeof AppCampaignsIndexRoute
-  '/_app/tools/': typeof AppToolsIndexRoute
-  '/_app/workspaces/': typeof AppWorkspacesIndexRoute
   '/api/public/cron/cluster-retros': typeof ApiPublicCronClusterRetrosRoute
   '/api/public/cron/daily-digest': typeof ApiPublicCronDailyDigestRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -534,16 +290,6 @@ export interface FileRouteTypes {
     | '/thumbnail'
     | '/unsubscribe'
     | '/businessos'
-    | '/calendar'
-    | '/connectors'
-    | '/dashboard'
-    | '/funnel'
-    | '/integrations'
-    | '/leads'
-    | '/requests'
-    | '/settings'
-    | '/templates'
-    | '/welcome'
     | '/email/unsubscribe'
     | '/invite/$token'
     | '/r/$slug'
@@ -554,27 +300,10 @@ export interface FileRouteTypes {
     | '/businessos/market'
     | '/businessos/profile'
     | '/businessos/sources'
-    | '/campaigns/$id'
-    | '/tools/$'
-    | '/tools/all-utms'
-    | '/tools/campaign-creator'
-    | '/tools/campaign-in-a-box'
-    | '/tools/campaign-performance'
-    | '/tools/event-intake'
-    | '/tools/events'
-    | '/tools/funnel-targets'
-    | '/tools/import'
-    | '/tools/list-cleaner'
-    | '/tools/taxonomy'
-    | '/tools/utm'
-    | '/workspaces/$id'
     | '/intake/$orgSlug/hackathon'
     | '/lovable/email/suppression'
     | '/request/status/$token'
     | '/businessos/'
-    | '/campaigns/'
-    | '/tools/'
-    | '/workspaces/'
     | '/api/public/cron/cluster-retros'
     | '/api/public/cron/daily-digest'
     | '/lovable/email/auth/preview'
@@ -590,16 +319,6 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/thumbnail'
     | '/unsubscribe'
-    | '/calendar'
-    | '/connectors'
-    | '/dashboard'
-    | '/funnel'
-    | '/integrations'
-    | '/leads'
-    | '/requests'
-    | '/settings'
-    | '/templates'
-    | '/welcome'
     | '/email/unsubscribe'
     | '/invite/$token'
     | '/r/$slug'
@@ -610,27 +329,10 @@ export interface FileRouteTypes {
     | '/businessos/market'
     | '/businessos/profile'
     | '/businessos/sources'
-    | '/campaigns/$id'
-    | '/tools/$'
-    | '/tools/all-utms'
-    | '/tools/campaign-creator'
-    | '/tools/campaign-in-a-box'
-    | '/tools/campaign-performance'
-    | '/tools/event-intake'
-    | '/tools/events'
-    | '/tools/funnel-targets'
-    | '/tools/import'
-    | '/tools/list-cleaner'
-    | '/tools/taxonomy'
-    | '/tools/utm'
-    | '/workspaces/$id'
     | '/intake/$orgSlug/hackathon'
     | '/lovable/email/suppression'
     | '/request/status/$token'
     | '/businessos'
-    | '/campaigns'
-    | '/tools'
-    | '/workspaces'
     | '/api/public/cron/cluster-retros'
     | '/api/public/cron/daily-digest'
     | '/lovable/email/auth/preview'
@@ -648,16 +350,6 @@ export interface FileRouteTypes {
     | '/thumbnail'
     | '/unsubscribe'
     | '/_app/businessos'
-    | '/_app/calendar'
-    | '/_app/connectors'
-    | '/_app/dashboard'
-    | '/_app/funnel'
-    | '/_app/integrations'
-    | '/_app/leads'
-    | '/_app/requests'
-    | '/_app/settings'
-    | '/_app/templates'
-    | '/_app/welcome'
     | '/email/unsubscribe'
     | '/invite/$token'
     | '/r/$slug'
@@ -668,27 +360,10 @@ export interface FileRouteTypes {
     | '/_app/businessos/market'
     | '/_app/businessos/profile'
     | '/_app/businessos/sources'
-    | '/_app/campaigns/$id'
-    | '/_app/tools/$'
-    | '/_app/tools/all-utms'
-    | '/_app/tools/campaign-creator'
-    | '/_app/tools/campaign-in-a-box'
-    | '/_app/tools/campaign-performance'
-    | '/_app/tools/event-intake'
-    | '/_app/tools/events'
-    | '/_app/tools/funnel-targets'
-    | '/_app/tools/import'
-    | '/_app/tools/list-cleaner'
-    | '/_app/tools/taxonomy'
-    | '/_app/tools/utm'
-    | '/_app/workspaces/$id'
     | '/intake/$orgSlug/hackathon'
     | '/lovable/email/suppression'
     | '/request/status/$token'
     | '/_app/businessos/'
-    | '/_app/campaigns/'
-    | '/_app/tools/'
-    | '/_app/workspaces/'
     | '/api/public/cron/cluster-retros'
     | '/api/public/cron/daily-digest'
     | '/lovable/email/auth/preview'
@@ -809,102 +484,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EmailUnsubscribeRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_app/welcome': {
-      id: '/_app/welcome'
-      path: '/welcome'
-      fullPath: '/welcome'
-      preLoaderRoute: typeof AppWelcomeRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/templates': {
-      id: '/_app/templates'
-      path: '/templates'
-      fullPath: '/templates'
-      preLoaderRoute: typeof AppTemplatesRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/settings': {
-      id: '/_app/settings'
-      path: '/settings'
-      fullPath: '/settings'
-      preLoaderRoute: typeof AppSettingsRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/requests': {
-      id: '/_app/requests'
-      path: '/requests'
-      fullPath: '/requests'
-      preLoaderRoute: typeof AppRequestsRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/leads': {
-      id: '/_app/leads'
-      path: '/leads'
-      fullPath: '/leads'
-      preLoaderRoute: typeof AppLeadsRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/integrations': {
-      id: '/_app/integrations'
-      path: '/integrations'
-      fullPath: '/integrations'
-      preLoaderRoute: typeof AppIntegrationsRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/funnel': {
-      id: '/_app/funnel'
-      path: '/funnel'
-      fullPath: '/funnel'
-      preLoaderRoute: typeof AppFunnelRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/dashboard': {
-      id: '/_app/dashboard'
-      path: '/dashboard'
-      fullPath: '/dashboard'
-      preLoaderRoute: typeof AppDashboardRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/connectors': {
-      id: '/_app/connectors'
-      path: '/connectors'
-      fullPath: '/connectors'
-      preLoaderRoute: typeof AppConnectorsRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/calendar': {
-      id: '/_app/calendar'
-      path: '/calendar'
-      fullPath: '/calendar'
-      preLoaderRoute: typeof AppCalendarRouteImport
-      parentRoute: typeof AppRoute
-    }
     '/_app/businessos': {
       id: '/_app/businessos'
       path: '/businessos'
       fullPath: '/businessos'
       preLoaderRoute: typeof AppBusinessosRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/workspaces/': {
-      id: '/_app/workspaces/'
-      path: '/workspaces'
-      fullPath: '/workspaces/'
-      preLoaderRoute: typeof AppWorkspacesIndexRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/tools/': {
-      id: '/_app/tools/'
-      path: '/tools'
-      fullPath: '/tools/'
-      preLoaderRoute: typeof AppToolsIndexRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/campaigns/': {
-      id: '/_app/campaigns/'
-      path: '/campaigns'
-      fullPath: '/campaigns/'
-      preLoaderRoute: typeof AppCampaignsIndexRouteImport
       parentRoute: typeof AppRoute
     }
     '/_app/businessos/': {
@@ -934,104 +518,6 @@ declare module '@tanstack/react-router' {
       fullPath: '/intake/$orgSlug/hackathon'
       preLoaderRoute: typeof IntakeOrgSlugHackathonRouteImport
       parentRoute: typeof rootRouteImport
-    }
-    '/_app/workspaces/$id': {
-      id: '/_app/workspaces/$id'
-      path: '/workspaces/$id'
-      fullPath: '/workspaces/$id'
-      preLoaderRoute: typeof AppWorkspacesIdRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/tools/utm': {
-      id: '/_app/tools/utm'
-      path: '/tools/utm'
-      fullPath: '/tools/utm'
-      preLoaderRoute: typeof AppToolsUtmRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/tools/taxonomy': {
-      id: '/_app/tools/taxonomy'
-      path: '/tools/taxonomy'
-      fullPath: '/tools/taxonomy'
-      preLoaderRoute: typeof AppToolsTaxonomyRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/tools/list-cleaner': {
-      id: '/_app/tools/list-cleaner'
-      path: '/tools/list-cleaner'
-      fullPath: '/tools/list-cleaner'
-      preLoaderRoute: typeof AppToolsListCleanerRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/tools/import': {
-      id: '/_app/tools/import'
-      path: '/tools/import'
-      fullPath: '/tools/import'
-      preLoaderRoute: typeof AppToolsImportRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/tools/funnel-targets': {
-      id: '/_app/tools/funnel-targets'
-      path: '/tools/funnel-targets'
-      fullPath: '/tools/funnel-targets'
-      preLoaderRoute: typeof AppToolsFunnelTargetsRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/tools/events': {
-      id: '/_app/tools/events'
-      path: '/tools/events'
-      fullPath: '/tools/events'
-      preLoaderRoute: typeof AppToolsEventsRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/tools/event-intake': {
-      id: '/_app/tools/event-intake'
-      path: '/tools/event-intake'
-      fullPath: '/tools/event-intake'
-      preLoaderRoute: typeof AppToolsEventIntakeRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/tools/campaign-performance': {
-      id: '/_app/tools/campaign-performance'
-      path: '/tools/campaign-performance'
-      fullPath: '/tools/campaign-performance'
-      preLoaderRoute: typeof AppToolsCampaignPerformanceRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/tools/campaign-in-a-box': {
-      id: '/_app/tools/campaign-in-a-box'
-      path: '/tools/campaign-in-a-box'
-      fullPath: '/tools/campaign-in-a-box'
-      preLoaderRoute: typeof AppToolsCampaignInABoxRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/tools/campaign-creator': {
-      id: '/_app/tools/campaign-creator'
-      path: '/tools/campaign-creator'
-      fullPath: '/tools/campaign-creator'
-      preLoaderRoute: typeof AppToolsCampaignCreatorRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/tools/all-utms': {
-      id: '/_app/tools/all-utms'
-      path: '/tools/all-utms'
-      fullPath: '/tools/all-utms'
-      preLoaderRoute: typeof AppToolsAllUtmsRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/tools/$': {
-      id: '/_app/tools/$'
-      path: '/tools/$'
-      fullPath: '/tools/$'
-      preLoaderRoute: typeof AppToolsSplatRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/campaigns/$id': {
-      id: '/_app/campaigns/$id'
-      path: '/campaigns/$id'
-      fullPath: '/campaigns/$id'
-      preLoaderRoute: typeof AppCampaignsIdRouteImport
-      parentRoute: typeof AppRoute
     }
     '/_app/businessos/sources': {
       id: '/_app/businessos/sources'
@@ -1144,64 +630,10 @@ const AppBusinessosRouteWithChildren = AppBusinessosRoute._addFileChildren(
 
 interface AppRouteChildren {
   AppBusinessosRoute: typeof AppBusinessosRouteWithChildren
-  AppCalendarRoute: typeof AppCalendarRoute
-  AppConnectorsRoute: typeof AppConnectorsRoute
-  AppDashboardRoute: typeof AppDashboardRoute
-  AppFunnelRoute: typeof AppFunnelRoute
-  AppIntegrationsRoute: typeof AppIntegrationsRoute
-  AppLeadsRoute: typeof AppLeadsRoute
-  AppRequestsRoute: typeof AppRequestsRoute
-  AppSettingsRoute: typeof AppSettingsRoute
-  AppTemplatesRoute: typeof AppTemplatesRoute
-  AppWelcomeRoute: typeof AppWelcomeRoute
-  AppCampaignsIdRoute: typeof AppCampaignsIdRoute
-  AppToolsSplatRoute: typeof AppToolsSplatRoute
-  AppToolsAllUtmsRoute: typeof AppToolsAllUtmsRoute
-  AppToolsCampaignCreatorRoute: typeof AppToolsCampaignCreatorRoute
-  AppToolsCampaignInABoxRoute: typeof AppToolsCampaignInABoxRoute
-  AppToolsCampaignPerformanceRoute: typeof AppToolsCampaignPerformanceRoute
-  AppToolsEventIntakeRoute: typeof AppToolsEventIntakeRoute
-  AppToolsEventsRoute: typeof AppToolsEventsRoute
-  AppToolsFunnelTargetsRoute: typeof AppToolsFunnelTargetsRoute
-  AppToolsImportRoute: typeof AppToolsImportRoute
-  AppToolsListCleanerRoute: typeof AppToolsListCleanerRoute
-  AppToolsTaxonomyRoute: typeof AppToolsTaxonomyRoute
-  AppToolsUtmRoute: typeof AppToolsUtmRoute
-  AppWorkspacesIdRoute: typeof AppWorkspacesIdRoute
-  AppCampaignsIndexRoute: typeof AppCampaignsIndexRoute
-  AppToolsIndexRoute: typeof AppToolsIndexRoute
-  AppWorkspacesIndexRoute: typeof AppWorkspacesIndexRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
   AppBusinessosRoute: AppBusinessosRouteWithChildren,
-  AppCalendarRoute: AppCalendarRoute,
-  AppConnectorsRoute: AppConnectorsRoute,
-  AppDashboardRoute: AppDashboardRoute,
-  AppFunnelRoute: AppFunnelRoute,
-  AppIntegrationsRoute: AppIntegrationsRoute,
-  AppLeadsRoute: AppLeadsRoute,
-  AppRequestsRoute: AppRequestsRoute,
-  AppSettingsRoute: AppSettingsRoute,
-  AppTemplatesRoute: AppTemplatesRoute,
-  AppWelcomeRoute: AppWelcomeRoute,
-  AppCampaignsIdRoute: AppCampaignsIdRoute,
-  AppToolsSplatRoute: AppToolsSplatRoute,
-  AppToolsAllUtmsRoute: AppToolsAllUtmsRoute,
-  AppToolsCampaignCreatorRoute: AppToolsCampaignCreatorRoute,
-  AppToolsCampaignInABoxRoute: AppToolsCampaignInABoxRoute,
-  AppToolsCampaignPerformanceRoute: AppToolsCampaignPerformanceRoute,
-  AppToolsEventIntakeRoute: AppToolsEventIntakeRoute,
-  AppToolsEventsRoute: AppToolsEventsRoute,
-  AppToolsFunnelTargetsRoute: AppToolsFunnelTargetsRoute,
-  AppToolsImportRoute: AppToolsImportRoute,
-  AppToolsListCleanerRoute: AppToolsListCleanerRoute,
-  AppToolsTaxonomyRoute: AppToolsTaxonomyRoute,
-  AppToolsUtmRoute: AppToolsUtmRoute,
-  AppWorkspacesIdRoute: AppWorkspacesIdRoute,
-  AppCampaignsIndexRoute: AppCampaignsIndexRoute,
-  AppToolsIndexRoute: AppToolsIndexRoute,
-  AppWorkspacesIndexRoute: AppWorkspacesIndexRoute,
 }
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
