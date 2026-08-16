@@ -6,7 +6,7 @@ import { GradientMesh } from "@/components/ui-custom/GradientMesh";
 import { ThemeToggle } from "@/components/ui-custom/ThemeToggle";
 import { UserMenu } from "@/components/app/UserMenu";
 import { RouteProgressBar } from "@/components/app/RouteProgressBar";
-import { IconLogo, IconSpark, IconChart, IconBolt, IconCheck, IconSettings } from "@/components/ui-custom/CustomIcon";
+import { IconLogo, IconSpark, IconChart, IconScroll, IconBolt, IconCheck, IconSettings } from "@/components/ui-custom/CustomIcon";
 import { I18nProvider, LANGS, useI18n } from "@/lib/i18n";
 import { BRAND } from "@/lib/brand";
 
@@ -18,7 +18,7 @@ const NAV = [
   { to: "/businessos", key: "nav.command", Icon: IconSpark, exact: true },
   { to: "/businessos/market", key: "nav.market", Icon: IconChart, exact: false },
   { to: "/businessos/sources", key: "nav.sources", Icon: IconBolt, exact: false },
-  { to: "/businessos/finance", key: "nav.finance", Icon: IconChart, exact: false },
+  { to: "/businessos/finance", key: "nav.finance", Icon: IconScroll, exact: false },
   { to: "/businessos/actions", key: "nav.actions", Icon: IconCheck, exact: false },
   { to: "/businessos/profile", key: "nav.profile", Icon: IconSettings, exact: false },
 ] as const;
