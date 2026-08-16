@@ -36,9 +36,9 @@ function LoginPage() {
 
   useEffect(() => {
     if (!loading && session) {
-      nav({ to: search.redirect as "/dashboard", replace: true });
+      nav({ to: redirectTo as "/dashboard", replace: true });
     }
-  }, [session, loading, nav, search.redirect]);
+  }, [session, loading, nav, redirectTo]);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -96,7 +96,7 @@ function LoginPage() {
   const google = async () => {
     setBusy(true);
     const result = await lovable.auth.signInWithOAuth("google", {
-      redirect_uri: `${window.location.origin}${search.redirect}`,
+      redirect_uri: `${window.location.origin}${redirectTo}`,
     });
     if (result.error) {
       toast.error(result.error.message);
